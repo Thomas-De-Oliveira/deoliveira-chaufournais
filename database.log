@@ -1,0 +1,131 @@
+1731673322443|5|statement|select * from information_schema.sequences
+1731673322463|7|statement|create table address (address_id bigserial not null, city varchar(255), country varchar(255), primary key (address_id))
+1731673322467|2|statement|create table address_parties (address_address_id bigint not null, parties_party_id bigint not null, primary key (address_address_id, parties_party_id))
+1731673322469|1|statement|create table address_users (address_address_id bigint not null, users_user_id bigint not null, primary key (address_address_id, users_user_id))
+1731673322472|2|statement|create table commentaries (commentary_id bigserial not null, commentary varchar(255), note integer, author_id bigint not null, user_id bigint not null, primary key (commentary_id))
+1731673322474|1|statement|create table interests (user_id bigint not null, type_party_id bigint not null, primary key (user_id, type_party_id))
+1731673322476|2|statement|create table need_for_party (type_provision_id bigint not null, party_id bigint not null, primary key (type_provision_id, party_id))
+1731673322479|2|statement|create table participate (participate_id bigserial not null, organiser boolean, validation boolean, party_id bigint, user_id bigint, primary key (participate_id))
+1731673322484|3|statement|create table party (party_id bigserial not null, date timestamp(6), name varchar(255), number_max_participate integer, price float4, publish boolean, street varchar(255), address_id bigint, type_party_id bigint, primary key (party_id))
+1731673322487|2|statement|create table party_participates (party_party_id bigint not null, participates_participate_id bigint not null, primary key (party_party_id, participates_participate_id))
+1731673322489|2|statement|create table provisions (provision_id bigserial not null, provision varchar(255), party_id bigint, type_provision_id bigint, user_id bigint, primary key (provision_id))
+1731673322493|2|statement|create table type_party (type_party_id bigserial not null, name varchar(255), primary key (type_party_id))
+1731673322495|2|statement|create table type_party_parties (type_party_type_party_id bigint not null, parties_party_id bigint not null, primary key (type_party_type_party_id, parties_party_id))
+1731673322498|2|statement|create table type_provision (type_provision_id bigserial not null, name varchar(255), primary key (type_provision_id))
+1731673322500|1|statement|create table type_provision_provisions (type_provision_type_provision_id bigint not null, provisions_provision_id bigint not null, primary key (type_provision_type_provision_id, provisions_provision_id))
+1731673322505|4|statement|create table users (user_id bigserial not null, area varchar(255), city varchar(255), email varchar(255), family_name varchar(255), name varchar(255), password_hash varchar(255), password_salt varchar(255), username varchar(255), address_id bigint, primary key (user_id))
+1731673322507|2|statement|create table users_participates (users_user_id bigint not null, participates_participate_id bigint not null, primary key (users_user_id, participates_participate_id))
+1731673322509|2|statement|create table users_provisions (users_user_id bigint not null, provisions_provision_id bigint not null, primary key (users_user_id, provisions_provision_id))
+1731673322512|1|statement|alter table if exists address_parties drop constraint if exists UK_a3orh7mg46ss9m75y6d9m5akd
+1731673322514|1|statement|alter table if exists address_parties add constraint UK_a3orh7mg46ss9m75y6d9m5akd unique (parties_party_id)
+1731673322514|0|statement|alter table if exists address_users drop constraint if exists UK_bym5d31asdao6kyquicjj8c2i
+1731673322516|2|statement|alter table if exists address_users add constraint UK_bym5d31asdao6kyquicjj8c2i unique (users_user_id)
+1731673322516|0|statement|alter table if exists party_participates drop constraint if exists UK_1vss7dlcminyp6a0dlsxspj23
+1731673322519|1|statement|alter table if exists party_participates add constraint UK_1vss7dlcminyp6a0dlsxspj23 unique (participates_participate_id)
+1731673322519|0|statement|alter table if exists type_party_parties drop constraint if exists UK_obi8pl1gva6f9mr6iieyyusfr
+1731673322521|1|statement|alter table if exists type_party_parties add constraint UK_obi8pl1gva6f9mr6iieyyusfr unique (parties_party_id)
+1731673322522|0|statement|alter table if exists type_provision_provisions drop constraint if exists UK_amrmoh8ivdlodr9sut4d0kiw5
+1731673322524|1|statement|alter table if exists type_provision_provisions add constraint UK_amrmoh8ivdlodr9sut4d0kiw5 unique (provisions_provision_id)
+1731673322524|0|statement|alter table if exists users_participates drop constraint if exists UK_4hm4lxgnuk0ckvlw3t7vw8xad
+1731673322527|2|statement|alter table if exists users_participates add constraint UK_4hm4lxgnuk0ckvlw3t7vw8xad unique (participates_participate_id)
+1731673322527|0|statement|alter table if exists users_provisions drop constraint if exists UK_c83imx0tsawmodi0i72hiu76n
+1731673322529|1|statement|alter table if exists users_provisions add constraint UK_c83imx0tsawmodi0i72hiu76n unique (provisions_provision_id)
+1731673322532|2|statement|alter table if exists address_parties add constraint FKf2r9113tikpr902ixskw633o8 foreign key (parties_party_id) references party
+1731673322533|0|statement|alter table if exists address_parties add constraint FKlg73lirdlycxrf0nknkc2u9c6 foreign key (address_address_id) references address
+1731673322534|1|statement|alter table if exists address_users add constraint FKfvnpf8lhorq32umvvar61uc1v foreign key (users_user_id) references users
+1731673322535|0|statement|alter table if exists address_users add constraint FKs3t7nnsc93i0po7ayk188afvp foreign key (address_address_id) references address
+1731673322536|0|statement|alter table if exists commentaries add constraint FKmqblrvnixyfs2sowkqdho5gtv foreign key (author_id) references users
+1731673322536|0|statement|alter table if exists commentaries add constraint FK4w16kqj6nkij4kgohharsbmhq foreign key (user_id) references users
+1731673322539|1|statement|alter table if exists interests add constraint FKcpuo6bjfw650v0vsw7eo0akdq foreign key (type_party_id) references type_party
+1731673322540|0|statement|alter table if exists interests add constraint FKq9kr60l7n7h3yf82s44rkoe4g foreign key (user_id) references users
+1731673322541|1|statement|alter table if exists need_for_party add constraint FKq5sxe37ywn20f562f3x4ox8i2 foreign key (party_id) references party
+1731673322542|0|statement|alter table if exists need_for_party add constraint FKa7l7iqbx6jv3atqg711l4skog foreign key (type_provision_id) references type_provision
+1731673322543|1|statement|alter table if exists participate add constraint FKfwj4mk1egsivqbtpyqr8mxj7w foreign key (party_id) references party
+1731673322544|0|statement|alter table if exists participate add constraint FK9a9rfw7ta48w3s5t6unrbx4hb foreign key (user_id) references users
+1731673322545|1|statement|alter table if exists party add constraint FKr3xd5httl0gqasj69pcxv5lf7 foreign key (address_id) references address
+1731673322546|0|statement|alter table if exists party add constraint FKps57ooh3ylfkaperh7qewfruc foreign key (type_party_id) references type_party
+1731673322547|1|statement|alter table if exists party_participates add constraint FKnoo755naeksg2msmxp3j2rxyr foreign key (participates_participate_id) references participate
+1731673322548|0|statement|alter table if exists party_participates add constraint FKl7v9wh20qh9i8bxa27t9pb1qs foreign key (party_party_id) references party
+1731673322549|0|statement|alter table if exists provisions add constraint FK7sknr4o2knscsosg9ikpm962h foreign key (party_id) references party
+1731673322549|0|statement|alter table if exists provisions add constraint FK6by31ui332fe0fkjt8mkq9y1u foreign key (type_provision_id) references type_provision
+1731673322554|1|statement|alter table if exists provisions add constraint FKm4bloxkrlymru3bctqtqhtsy2 foreign key (user_id) references users
+1731673322555|1|statement|alter table if exists type_party_parties add constraint FK76q9ijor5ybdy6b3tbo28pfds foreign key (parties_party_id) references party
+1731673322556|0|statement|alter table if exists type_party_parties add constraint FK5w4imeavv08x3ymjxeedeg3jf foreign key (type_party_type_party_id) references type_party
+1731673322556|1|statement|alter table if exists type_provision_provisions add constraint FK1u09l999v9ofok0e0ffqeb2wx foreign key (provisions_provision_id) references provisions
+1731673322558|0|statement|alter table if exists type_provision_provisions add constraint FKt1uymac3gbt7p7rtlfm81x9xh foreign key (type_provision_type_provision_id) references type_provision
+1731673322559|0|statement|alter table if exists users add constraint FKditu6lr4ek16tkxtdsne0gxib foreign key (address_id) references address
+1731673322561|1|statement|alter table if exists users_participates add constraint FKqlybh25kkrw85qcag9f77oqe7 foreign key (participates_participate_id) references participate
+1731673322562|0|statement|alter table if exists users_participates add constraint FKldobb5jrt3yngxg8fk53yvonk foreign key (users_user_id) references users
+1731673322563|1|statement|alter table if exists users_provisions add constraint FK4dgbfj7r3qs5518jcgwomumwd foreign key (provisions_provision_id) references provisions
+1731673322564|0|statement|alter table if exists users_provisions add constraint FKig3tbff3f44fkb63uuubbdiib foreign key (users_user_id) references users
+1731674279085|4|statement|select * from information_schema.sequences
+1731674279104|7|statement|create table address (address_id bigserial not null, city varchar(255), country varchar(255), party_id bigint, user_id bigint, primary key (address_id))
+1731674279106|2|statement|create table commentaries (commentary_id bigserial not null, commentary varchar(255), note integer, author_id bigint not null, user_id bigint not null, primary key (commentary_id))
+1731674279109|2|statement|create table interests (user_id bigint not null, type_party_id bigint not null, primary key (user_id, type_party_id))
+1731674279111|2|statement|create table need_for_party (type_provision_id bigint not null, party_id bigint not null, primary key (type_provision_id, party_id))
+1731674279114|2|statement|create table participate (participate_id bigserial not null, organiser boolean, validation boolean, party_id bigint, user_id bigint, primary key (participate_id))
+1731674279119|4|statement|create table party (party_id bigserial not null, date timestamp(6), name varchar(255), number_max_participate integer, price float4, publish boolean, street varchar(255), address_id bigint, participate_id bigint, type_party_id bigint, primary key (party_id))
+1731674279122|2|statement|create table provisions (provision_id bigserial not null, provision varchar(255), party_id bigint, type_provision_id bigint, user_id bigint, primary key (provision_id))
+1731674279125|2|statement|create table type_party (type_party_id bigserial not null, name varchar(255), party_id bigint, primary key (type_party_id))
+1731674279128|2|statement|create table type_provision (type_provision_id bigserial not null, name varchar(255), provision_id bigint, primary key (type_provision_id))
+1731674279132|3|statement|create table users (user_id bigserial not null, area varchar(255), city varchar(255), email varchar(255), family_name varchar(255), name varchar(255), password_hash varchar(255), password_salt varchar(255), username varchar(255), address_id bigint, participate_id bigint, provision_id bigint, primary key (user_id))
+1731674279134|1|statement|alter table if exists address drop constraint if exists UK_ru96g8lbys2lxyrpldylw9k03
+1731674279138|2|statement|alter table if exists address add constraint UK_ru96g8lbys2lxyrpldylw9k03 unique (party_id)
+1731674279138|0|statement|alter table if exists address drop constraint if exists UK_7rod8a71yep5vxasb0ms3osbg
+1731674279141|2|statement|alter table if exists address add constraint UK_7rod8a71yep5vxasb0ms3osbg unique (user_id)
+1731674279142|0|statement|alter table if exists party drop constraint if exists UK_39cusk71kkmi2mwkdlwv1909c
+1731674279144|1|statement|alter table if exists party add constraint UK_39cusk71kkmi2mwkdlwv1909c unique (participate_id)
+1731674279144|0|statement|alter table if exists type_party drop constraint if exists UK_2qvyqsr0el4m3yc1t8q77wy33
+1731674279147|2|statement|alter table if exists type_party add constraint UK_2qvyqsr0el4m3yc1t8q77wy33 unique (party_id)
+1731674279148|0|statement|alter table if exists type_provision drop constraint if exists UK_j55di945c6ppcu68lbag6oxyq
+1731674279150|1|statement|alter table if exists type_provision add constraint UK_j55di945c6ppcu68lbag6oxyq unique (provision_id)
+1731674279150|0|statement|alter table if exists users drop constraint if exists UK_om7asoynfbmog8l8cw2k06iai
+1731674279153|2|statement|alter table if exists users add constraint UK_om7asoynfbmog8l8cw2k06iai unique (participate_id)
+1731674279153|0|statement|alter table if exists users drop constraint if exists UK_h0t3rup8x4de3psalfpj759u6
+1731674279158|3|statement|alter table if exists users add constraint UK_h0t3rup8x4de3psalfpj759u6 unique (provision_id)
+1731674279161|2|statement|alter table if exists address add constraint FK4htuy4lqyfyd7vauv2wlto7qd foreign key (party_id) references party
+1731674279162|1|statement|alter table if exists address add constraint FK6i66ijb8twgcqtetl8eeeed6v foreign key (user_id) references users
+1731674279164|1|statement|alter table if exists commentaries add constraint FKmqblrvnixyfs2sowkqdho5gtv foreign key (author_id) references users
+1731674279164|0|statement|alter table if exists commentaries add constraint FK4w16kqj6nkij4kgohharsbmhq foreign key (user_id) references users
+1731674279167|1|statement|alter table if exists interests add constraint FKcpuo6bjfw650v0vsw7eo0akdq foreign key (type_party_id) references type_party
+1731674279168|0|statement|alter table if exists interests add constraint FKq9kr60l7n7h3yf82s44rkoe4g foreign key (user_id) references users
+1731674279169|1|statement|alter table if exists need_for_party add constraint FKq5sxe37ywn20f562f3x4ox8i2 foreign key (party_id) references party
+1731674279170|0|statement|alter table if exists need_for_party add constraint FKa7l7iqbx6jv3atqg711l4skog foreign key (type_provision_id) references type_provision
+1731674279171|0|statement|alter table if exists participate add constraint FKfwj4mk1egsivqbtpyqr8mxj7w foreign key (party_id) references party
+1731674279171|0|statement|alter table if exists participate add constraint FK9a9rfw7ta48w3s5t6unrbx4hb foreign key (user_id) references users
+1731674279172|0|statement|alter table if exists party add constraint FKr3xd5httl0gqasj69pcxv5lf7 foreign key (address_id) references address
+1731674279173|0|statement|alter table if exists party add constraint FKpfpqtfenfql7rg7wm01fw5xl1 foreign key (participate_id) references participate
+1731674279174|1|statement|alter table if exists party add constraint FKps57ooh3ylfkaperh7qewfruc foreign key (type_party_id) references type_party
+1731674279175|1|statement|alter table if exists provisions add constraint FK7sknr4o2knscsosg9ikpm962h foreign key (party_id) references party
+1731674279176|0|statement|alter table if exists provisions add constraint FK6by31ui332fe0fkjt8mkq9y1u foreign key (type_provision_id) references type_provision
+1731674279177|0|statement|alter table if exists provisions add constraint FKm4bloxkrlymru3bctqtqhtsy2 foreign key (user_id) references users
+1731674279177|0|statement|alter table if exists type_party add constraint FKxk44joikl74sji5j7eui4hxo foreign key (party_id) references party
+1731674279179|0|statement|alter table if exists type_provision add constraint FK8wcpmwhlxcwgcyv7tqdpt08rh foreign key (provision_id) references provisions
+1731674279179|0|statement|alter table if exists users add constraint FKditu6lr4ek16tkxtdsne0gxib foreign key (address_id) references address
+1731674279180|0|statement|alter table if exists users add constraint FKqd7sjtylagbxuj6mosleb4h8k foreign key (participate_id) references participate
+1731674279180|0|statement|alter table if exists users add constraint FKpfovnpx9euecoybyf0ncowcc6 foreign key (provision_id) references provisions
+1731674560331|6|statement|select * from information_schema.sequences
+1731674560355|8|statement|create table address (address_id bigserial not null, city varchar(255), country varchar(255), primary key (address_id))
+1731674560359|3|statement|create table commentaries (commentary_id bigserial not null, commentary varchar(255), note integer, author_id bigint not null, user_id bigint not null, primary key (commentary_id))
+1731674560362|2|statement|create table interests (user_id bigint not null, type_party_id bigint not null, primary key (user_id, type_party_id))
+1731674560364|1|statement|create table need_for_party (type_provision_id bigint not null, party_id bigint not null, primary key (type_provision_id, party_id))
+1731674560367|2|statement|create table participate (participate_id bigserial not null, organiser boolean, validation boolean, party_id bigint, user_id bigint, primary key (participate_id))
+1731674560372|3|statement|create table party (party_id bigserial not null, date timestamp(6), name varchar(255), number_max_participate integer, price float4, publish boolean, street varchar(255), address_id bigint, type_party_id bigint, primary key (party_id))
+1731674560375|2|statement|create table provisions (provision_id bigserial not null, provision varchar(255), party_id bigint, type_provision_id bigint, user_id bigint, primary key (provision_id))
+1731674560378|2|statement|create table type_party (type_party_id bigserial not null, name varchar(255), primary key (type_party_id))
+1731674560382|2|statement|create table type_provision (type_provision_id bigserial not null, name varchar(255), primary key (type_provision_id))
+1731674560386|4|statement|create table users (user_id bigserial not null, email varchar(255), family_name varchar(255), name varchar(255), password_hash varchar(255), password_salt varchar(255), username varchar(255), address_id bigint, primary key (user_id))
+1731674560391|3|statement|alter table if exists commentaries add constraint FKmqblrvnixyfs2sowkqdho5gtv foreign key (author_id) references users
+1731674560392|1|statement|alter table if exists commentaries add constraint FK4w16kqj6nkij4kgohharsbmhq foreign key (user_id) references users
+1731674560394|1|statement|alter table if exists interests add constraint FKcpuo6bjfw650v0vsw7eo0akdq foreign key (type_party_id) references type_party
+1731674560394|0|statement|alter table if exists interests add constraint FKq9kr60l7n7h3yf82s44rkoe4g foreign key (user_id) references users
+1731674560396|0|statement|alter table if exists need_for_party add constraint FKq5sxe37ywn20f562f3x4ox8i2 foreign key (party_id) references party
+1731674560397|1|statement|alter table if exists need_for_party add constraint FKa7l7iqbx6jv3atqg711l4skog foreign key (type_provision_id) references type_provision
+1731674560398|0|statement|alter table if exists participate add constraint FKfwj4mk1egsivqbtpyqr8mxj7w foreign key (party_id) references party
+1731674560399|0|statement|alter table if exists participate add constraint FK9a9rfw7ta48w3s5t6unrbx4hb foreign key (user_id) references users
+1731674560400|1|statement|alter table if exists party add constraint FKr3xd5httl0gqasj69pcxv5lf7 foreign key (address_id) references address
+1731674560401|0|statement|alter table if exists party add constraint FKps57ooh3ylfkaperh7qewfruc foreign key (type_party_id) references type_party
+1731674560403|1|statement|alter table if exists provisions add constraint FK7sknr4o2knscsosg9ikpm962h foreign key (party_id) references party
+1731674560404|0|statement|alter table if exists provisions add constraint FK6by31ui332fe0fkjt8mkq9y1u foreign key (type_provision_id) references type_provision
+1731674560406|1|statement|alter table if exists provisions add constraint FKm4bloxkrlymru3bctqtqhtsy2 foreign key (user_id) references users
+1731674560407|1|statement|alter table if exists users add constraint FKditu6lr4ek16tkxtdsne0gxib foreign key (address_id) references address
