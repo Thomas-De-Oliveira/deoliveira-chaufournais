@@ -17,3 +17,66 @@
 1733926950620|0|commit|
 1733926950622|0|statement|select count(*) from address a1_0
 1733926950623|0|commit|
+1733926997002|4|statement|select * from information_schema.sequences
+1733926997037|0|statement|select * from "public"."users" where 1=0
+1733926997044|0|statement|select * from "public"."users" where 1=0
+1733926997055|0|statement|select * from "public"."type_party" where 1=0
+1733926997058|0|statement|select * from "public"."users" where 1=0
+1733926997069|0|statement|select * from "public"."party" where 1=0
+1733926997073|0|statement|select * from "public"."type_provision" where 1=0
+1733926997084|0|statement|select * from "public"."party" where 1=0
+1733926997086|0|statement|select * from "public"."users" where 1=0
+1733926997096|0|statement|select * from "public"."address" where 1=0
+1733926997100|0|statement|select * from "public"."type_party" where 1=0
+1733926997110|0|statement|select * from "public"."party" where 1=0
+1733926997112|0|statement|select * from "public"."type_provision" where 1=0
+1733926997113|0|statement|select * from "public"."users" where 1=0
+1733926997123|0|statement|select * from "public"."address" where 1=0
+1733926998261|0|statement|select count(*) from users u1_0
+1733926998263|0|commit|
+1733926998266|0|statement|select count(*) from address a1_0
+1733926998266|0|commit|
+1733927144946|0|statement|select p1_0.party_id,p1_0.address_id,p1_0.date,p1_0.name,p1_0.number_max_participate,p1_0.price,p1_0.publish,p1_0.street,p1_0.type_party_id from party p1_0
+1733927144947|0|commit|
+1733927403380|3|statement|select * from information_schema.sequences
+1733927403414|0|statement|select * from "public"."users" where 1=0
+1733927403420|0|statement|select * from "public"."users" where 1=0
+1733927403430|0|statement|select * from "public"."type_party" where 1=0
+1733927403433|0|statement|select * from "public"."users" where 1=0
+1733927403442|0|statement|select * from "public"."party" where 1=0
+1733927403447|0|statement|select * from "public"."type_provision" where 1=0
+1733927403458|0|statement|select * from "public"."party" where 1=0
+1733927403460|0|statement|select * from "public"."users" where 1=0
+1733927403470|0|statement|select * from "public"."address" where 1=0
+1733927403473|0|statement|select * from "public"."type_party" where 1=0
+1733927403482|0|statement|select * from "public"."party" where 1=0
+1733927403484|0|statement|select * from "public"."type_provision" where 1=0
+1733927403486|0|statement|select * from "public"."users" where 1=0
+1733927403496|0|statement|select * from "public"."address" where 1=0
+1733927404783|1|statement|select count(*) from users u1_0
+1733927404787|0|commit|
+1733927404790|0|statement|select count(*) from address a1_0
+1733927404790|0|commit|
+1733927447269|3|statement|select p1_0.provision_id,p1_0.party_id,p1_0.provision,p1_0.type_provision_id,p1_0.user_id from provisions p1_0
+1733927447270|0|commit|
+1733927633833|3|statement|select * from information_schema.sequences
+1733927633880|0|statement|select * from "public"."users" where 1=0
+1733927633880|0|statement|select * from "public"."users" where 1=0
+1733927633902|0|statement|select * from "public"."type_party" where 1=0
+1733927633902|0|statement|select * from "public"."users" where 1=0
+1733927633912|0|statement|select * from "public"."party" where 1=0
+1733927633912|0|statement|select * from "public"."type_provision" where 1=0
+1733927633928|0|statement|select * from "public"."party" where 1=0
+1733927633928|0|statement|select * from "public"."users" where 1=0
+1733927633943|0|statement|select * from "public"."address" where 1=0
+1733927633943|0|statement|select * from "public"."type_party" where 1=0
+1733927633959|0|statement|select * from "public"."party" where 1=0
+1733927633959|0|statement|select * from "public"."type_provision" where 1=0
+1733927633959|0|statement|select * from "public"."users" where 1=0
+1733927633959|0|statement|select * from "public"."address" where 1=0
+1733927635305|1|statement|select count(*) from users u1_0
+1733927635318|0|commit|
+1733927635318|0|statement|select count(*) from address a1_0
+1733927635318|0|commit|
+1733927690457|5|statement|select p1_0.participate_id,p1_0.organiser,p1_0.party_id,p1_0.user_id,p1_0.validation from participate p1_0
+1733927690458|0|commit|
