@@ -1,0 +1,19 @@
+1733926949267|4|statement|select * from information_schema.sequences
+1733926949303|0|statement|select * from "public"."users" where 1=0
+1733926949310|0|statement|select * from "public"."users" where 1=0
+1733926949320|0|statement|select * from "public"."type_party" where 1=0
+1733926949324|0|statement|select * from "public"."users" where 1=0
+1733926949335|0|statement|select * from "public"."party" where 1=0
+1733926949339|0|statement|select * from "public"."type_provision" where 1=0
+1733926949350|0|statement|select * from "public"."party" where 1=0
+1733926949352|0|statement|select * from "public"."users" where 1=0
+1733926949361|0|statement|select * from "public"."address" where 1=0
+1733926949365|0|statement|select * from "public"."type_party" where 1=0
+1733926949375|0|statement|select * from "public"."party" where 1=0
+1733926949377|0|statement|select * from "public"."type_provision" where 1=0
+1733926949379|0|statement|select * from "public"."users" where 1=0
+1733926949388|0|statement|select * from "public"."address" where 1=0
+1733926950617|1|statement|select count(*) from users u1_0
+1733926950620|0|commit|
+1733926950622|0|statement|select count(*) from address a1_0
+1733926950623|0|commit|
