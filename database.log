@@ -348,3 +348,19 @@
 1733921780268|0|commit|
 1733921780279|1|statement|update commentaries set author_id=1,commentary='Great work on the recent project! Very detailed and thorough.',note=1,user_id=2 where commentary_id=2
 1733921780281|0|commit|
+1733924623167|13|statement|select * from information_schema.sequences
+1733924623204|7|statement|alter table if exists commentaries add column created_at timestamp(6) not null
+1733924623222|1|statement|select * from "public"."users" where 1=0
+1733924623228|0|statement|select * from "public"."users" where 1=0
+1733924623238|1|statement|select * from "public"."type_party" where 1=0
+1733924623241|0|statement|select * from "public"."users" where 1=0
+1733924623249|1|statement|select * from "public"."party" where 1=0
+1733924623254|1|statement|select * from "public"."type_provision" where 1=0
+1733924623263|0|statement|select * from "public"."party" where 1=0
+1733924623265|0|statement|select * from "public"."users" where 1=0
+1733924623273|2|statement|select * from "public"."address" where 1=0
+1733924623278|0|statement|select * from "public"."type_party" where 1=0
+1733924623287|0|statement|select * from "public"."party" where 1=0
+1733924623288|0|statement|select * from "public"."type_provision" where 1=0
+1733924623290|0|statement|select * from "public"."users" where 1=0
+1733924623297|0|statement|select * from "public"."address" where 1=0
