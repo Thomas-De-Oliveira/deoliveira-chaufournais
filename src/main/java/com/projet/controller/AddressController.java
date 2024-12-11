@@ -18,8 +18,9 @@ public class AddressController {
     private AddressService addressService;
 
     @GetMapping
-    public ResponseEntity<List<AddressDto>> findAll(@RequestParam(defaultValue = "0") int page,
-                                                    @RequestParam(defaultValue = "5") int size) {
+    public ResponseEntity<List<AddressDto>> findAll(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "5") int size) {
         Pageable pageable = PageRequest.of(page, size);
         return ResponseEntity.ok(addressService.getAllAddresses(pageable));
     }
