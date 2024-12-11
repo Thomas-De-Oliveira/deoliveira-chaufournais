@@ -129,3 +129,222 @@
 1731674560404|0|statement|alter table if exists provisions add constraint FK6by31ui332fe0fkjt8mkq9y1u foreign key (type_provision_id) references type_provision
 1731674560406|1|statement|alter table if exists provisions add constraint FKm4bloxkrlymru3bctqtqhtsy2 foreign key (user_id) references users
 1731674560407|1|statement|alter table if exists users add constraint FKditu6lr4ek16tkxtdsne0gxib foreign key (address_id) references address
+1731675990267|4|statement|select * from information_schema.sequences
+1731675990310|22|statement|create table address (address_id bigserial not null, city varchar(255), country varchar(255), primary key (address_id))
+1731675990317|6|statement|create table commentaries (commentary_id bigserial not null, commentary varchar(255), note integer, author_id bigint not null, user_id bigint not null, primary key (commentary_id))
+1731675990324|6|statement|create table interests (user_id bigint not null, type_party_id bigint not null, primary key (user_id, type_party_id))
+1731675990331|6|statement|create table need_for_party (type_provision_id bigint not null, party_id bigint not null, primary key (type_provision_id, party_id))
+1731675990338|6|statement|create table participate (participate_id bigserial not null, organiser boolean, validation boolean, party_id bigint, user_id bigint, primary key (participate_id))
+1731675990349|10|statement|create table party (party_id bigserial not null, date timestamp(6), name varchar(255), number_max_participate integer, price float4, publish boolean, street varchar(255), address_id bigint, type_party_id bigint, primary key (party_id))
+1731675990356|6|statement|create table provisions (provision_id bigserial not null, provision varchar(255), party_id bigint, type_provision_id bigint, user_id bigint, primary key (provision_id))
+1731675990363|6|statement|create table type_party (type_party_id bigserial not null, name varchar(255), primary key (type_party_id))
+1731675990369|6|statement|create table type_provision (type_provision_id bigserial not null, name varchar(255), primary key (type_provision_id))
+1731675990382|12|statement|create table users (user_id bigserial not null, email varchar(255), family_name varchar(255), name varchar(255), password_hash varchar(255), password_salt varchar(255), username varchar(255), address_id bigint, primary key (user_id))
+1731675990393|10|statement|alter table if exists commentaries add constraint FKmqblrvnixyfs2sowkqdho5gtv foreign key (author_id) references users
+1731675990395|1|statement|alter table if exists commentaries add constraint FK4w16kqj6nkij4kgohharsbmhq foreign key (user_id) references users
+1731675990398|2|statement|alter table if exists interests add constraint FKcpuo6bjfw650v0vsw7eo0akdq foreign key (type_party_id) references type_party
+1731675990401|2|statement|alter table if exists interests add constraint FKq9kr60l7n7h3yf82s44rkoe4g foreign key (user_id) references users
+1731675990404|2|statement|alter table if exists need_for_party add constraint FKq5sxe37ywn20f562f3x4ox8i2 foreign key (party_id) references party
+1731675990406|1|statement|alter table if exists need_for_party add constraint FKa7l7iqbx6jv3atqg711l4skog foreign key (type_provision_id) references type_provision
+1731675990408|1|statement|alter table if exists participate add constraint FKfwj4mk1egsivqbtpyqr8mxj7w foreign key (party_id) references party
+1731675990410|1|statement|alter table if exists participate add constraint FK9a9rfw7ta48w3s5t6unrbx4hb foreign key (user_id) references users
+1731675990412|1|statement|alter table if exists party add constraint FKr3xd5httl0gqasj69pcxv5lf7 foreign key (address_id) references address
+1731675990413|1|statement|alter table if exists party add constraint FKps57ooh3ylfkaperh7qewfruc foreign key (type_party_id) references type_party
+1731675990415|1|statement|alter table if exists provisions add constraint FK7sknr4o2knscsosg9ikpm962h foreign key (party_id) references party
+1731675990417|1|statement|alter table if exists provisions add constraint FK6by31ui332fe0fkjt8mkq9y1u foreign key (type_provision_id) references type_provision
+1731675990420|2|statement|alter table if exists provisions add constraint FKm4bloxkrlymru3bctqtqhtsy2 foreign key (user_id) references users
+1731675990422|1|statement|alter table if exists users add constraint FKditu6lr4ek16tkxtdsne0gxib foreign key (address_id) references address
+1731676009909|4|statement|select * from information_schema.sequences
+1731676009946|0|statement|select * from "public"."users" where 1=0
+1731676009953|0|statement|select * from "public"."users" where 1=0
+1731676009963|0|statement|select * from "public"."type_party" where 1=0
+1731676009967|0|statement|select * from "public"."users" where 1=0
+1731676009978|0|statement|select * from "public"."party" where 1=0
+1731676009982|0|statement|select * from "public"."type_provision" where 1=0
+1731676009993|0|statement|select * from "public"."party" where 1=0
+1731676009996|0|statement|select * from "public"."users" where 1=0
+1731676010006|0|statement|select * from "public"."address" where 1=0
+1731676010010|0|statement|select * from "public"."type_party" where 1=0
+1731676010019|0|statement|select * from "public"."party" where 1=0
+1731676010020|0|statement|select * from "public"."type_provision" where 1=0
+1731676010022|0|statement|select * from "public"."users" where 1=0
+1731676010033|0|statement|select * from "public"."address" where 1=0
+1731676231842|3|statement|insert into address (city,country) values ('cc','coucou')
+1731676231857|1|commit|
+1731676239116|0|statement|insert into address (city,country) values ('cc2','coucou2')
+1731676239117|0|commit|
+1731676242400|0|statement|insert into address (city,country) values ('cc23','coucou23')
+1731676242401|0|commit|
+1731676248056|1|statement|select a1_0.address_id,a1_0.city,a1_0.country from address a1_0 offset 0 rows fetch first 5 rows only
+1731676248064|0|commit|
+1731676257615|0|statement|select a1_0.address_id,a1_0.city,a1_0.country from address a1_0 where a1_0.address_id=1
+1731676257625|1|statement|delete from address where address_id=1
+1731676257627|0|commit|
+1731676520401|1|statement|select a1_0.address_id,a1_0.city,a1_0.country from address a1_0 where a1_0.address_id=2
+1731676520417|1|statement|update address set city='Coucoucou',country='cccccccccccccccc' where address_id=2
+1731676520421|1|commit|
+1731676526108|0|statement|select a1_0.address_id,a1_0.city,a1_0.country from address a1_0 where a1_0.address_id=2
+1731676526110|0|commit|
+1731677812184|4|statement|select * from information_schema.sequences
+1731677812219|0|statement|select * from "public"."users" where 1=0
+1731677812224|0|statement|select * from "public"."users" where 1=0
+1731677812236|0|statement|select * from "public"."type_party" where 1=0
+1731677812241|0|statement|select * from "public"."users" where 1=0
+1731677812251|0|statement|select * from "public"."party" where 1=0
+1731677812256|0|statement|select * from "public"."type_provision" where 1=0
+1731677812268|0|statement|select * from "public"."party" where 1=0
+1731677812271|0|statement|select * from "public"."users" where 1=0
+1731677812280|0|statement|select * from "public"."address" where 1=0
+1731677812284|0|statement|select * from "public"."type_party" where 1=0
+1731677812293|0|statement|select * from "public"."party" where 1=0
+1731677812295|0|statement|select * from "public"."type_provision" where 1=0
+1731677812297|0|statement|select * from "public"."users" where 1=0
+1731677812307|0|statement|select * from "public"."address" where 1=0
+1731677870417|2|statement|select u1_0.user_id,u1_0.address_id,u1_0.email,u1_0.family_name,u1_0.name,u1_0.password_hash,u1_0.password_salt,u1_0.username from users u1_0 where u1_0.user_id=12345
+1731677870417|0|commit|
+1731677885388|0|statement|select u1_0.user_id,u1_0.address_id,u1_0.email,u1_0.family_name,u1_0.name,u1_0.password_hash,u1_0.password_salt,u1_0.username from users u1_0 where u1_0.user_id=2
+1731677885390|0|commit|
+1731677930163|1|statement|insert into users (address_id,email,family_name,name,password_hash,password_salt,username) values (NULL,'johndoe@example.com','Doe','John','hashedpassword123','saltedpassword123','johndoe123')
+1731677930167|0|statement|insert into type_party (name) values ('Admin')
+1731677930168|0|statement|insert into type_party (name) values ('User')
+1731677930181|1|statement|insert into interests (user_id,type_party_id) values (1,1)
+1731677930182|1|statement|insert into interests (user_id,type_party_id) values (1,2)
+1731677930183|0|commit|
+1731677945593|0|statement|select u1_0.user_id,u1_0.address_id,u1_0.email,u1_0.family_name,u1_0.name,u1_0.password_hash,u1_0.password_salt,u1_0.username from users u1_0 where u1_0.user_id=1
+1731677945601|0|commit|
+1731677945609|0|statement|select u1_0.user_id,u1_0.address_id,u1_0.email,u1_0.family_name,u1_0.name,u1_0.password_hash,u1_0.password_salt,u1_0.username from users u1_0 where u1_0.user_id=67890
+1731677945609|0|commit|
+1731677962539|0|statement|select u1_0.user_id,u1_0.address_id,u1_0.email,u1_0.family_name,u1_0.name,u1_0.password_hash,u1_0.password_salt,u1_0.username from users u1_0 where u1_0.user_id=1
+1731677962540|0|commit|
+1731677962542|0|commit|
+1731677962546|2|statement|insert into commentaries (author_id,commentary,note,user_id) values (1,'This is a great product! I would highly recommend it to others.',5,1)
+1731677962550|2|commit|
+1731677984436|0|statement|select c1_0.commentary_id,c1_0.author_id,c1_0.commentary,c1_0.note,c1_0.user_id from commentaries c1_0
+1731677984437|0|statement|select u1_0.user_id,u1_0.address_id,u1_0.email,u1_0.family_name,u1_0.name,u1_0.password_hash,u1_0.password_salt,u1_0.username from users u1_0 where u1_0.user_id=1
+1731677984438|0|commit|
+1731678382044|4|statement|select * from information_schema.sequences
+1731678382074|10|statement|alter table if exists commentaries add column created_at timestamp(6) not null
+1731678382099|0|statement|select * from "public"."users" where 1=0
+1731678382107|0|statement|select * from "public"."users" where 1=0
+1731678382119|0|statement|select * from "public"."type_party" where 1=0
+1731678382123|0|statement|select * from "public"."users" where 1=0
+1731678382134|0|statement|select * from "public"."party" where 1=0
+1731678382139|0|statement|select * from "public"."type_provision" where 1=0
+1731678382151|0|statement|select * from "public"."party" where 1=0
+1731678382154|0|statement|select * from "public"."users" where 1=0
+1731678382164|0|statement|select * from "public"."address" where 1=0
+1731678382167|0|statement|select * from "public"."type_party" where 1=0
+1731678382176|0|statement|select * from "public"."party" where 1=0
+1731678382178|0|statement|select * from "public"."type_provision" where 1=0
+1731678382180|0|statement|select * from "public"."users" where 1=0
+1731678382189|0|statement|select * from "public"."address" where 1=0
+1731678448141|3|statement|select * from information_schema.sequences
+1731678448170|16|statement|create table address (address_id bigserial not null, city varchar(255), country varchar(255), primary key (address_id))
+1731678448177|6|statement|create table commentaries (commentary_id bigserial not null, commentary varchar(255), created_at timestamp(6) not null, note integer, author_id bigint not null, user_id bigint not null, primary key (commentary_id))
+1731678448183|5|statement|create table interests (user_id bigint not null, type_party_id bigint not null, primary key (user_id, type_party_id))
+1731678448189|5|statement|create table need_for_party (type_provision_id bigint not null, party_id bigint not null, primary key (type_provision_id, party_id))
+1731678448198|7|statement|create table participate (participate_id bigserial not null, organiser boolean, validation boolean, party_id bigint, user_id bigint, primary key (participate_id))
+1731678448212|12|statement|create table party (party_id bigserial not null, date timestamp(6), name varchar(255), number_max_participate integer, price float4, publish boolean, street varchar(255), address_id bigint, type_party_id bigint, primary key (party_id))
+1731678448221|7|statement|create table provisions (provision_id bigserial not null, provision varchar(255), party_id bigint, type_provision_id bigint, user_id bigint, primary key (provision_id))
+1731678448231|8|statement|create table type_party (type_party_id bigserial not null, name varchar(255), primary key (type_party_id))
+1731678448238|7|statement|create table type_provision (type_provision_id bigserial not null, name varchar(255), primary key (type_provision_id))
+1731678448254|13|statement|create table users (user_id bigserial not null, email varchar(255), family_name varchar(255), name varchar(255), password_hash varchar(255), password_salt varchar(255), username varchar(255), address_id bigint, primary key (user_id))
+1731678448262|6|statement|alter table if exists commentaries add constraint FKmqblrvnixyfs2sowkqdho5gtv foreign key (author_id) references users
+1731678448264|1|statement|alter table if exists commentaries add constraint FK4w16kqj6nkij4kgohharsbmhq foreign key (user_id) references users
+1731678448268|2|statement|alter table if exists interests add constraint FKcpuo6bjfw650v0vsw7eo0akdq foreign key (type_party_id) references type_party
+1731678448270|1|statement|alter table if exists interests add constraint FKq9kr60l7n7h3yf82s44rkoe4g foreign key (user_id) references users
+1731678448272|1|statement|alter table if exists need_for_party add constraint FKq5sxe37ywn20f562f3x4ox8i2 foreign key (party_id) references party
+1731678448273|1|statement|alter table if exists need_for_party add constraint FKa7l7iqbx6jv3atqg711l4skog foreign key (type_provision_id) references type_provision
+1731678448275|1|statement|alter table if exists participate add constraint FKfwj4mk1egsivqbtpyqr8mxj7w foreign key (party_id) references party
+1731678448276|1|statement|alter table if exists participate add constraint FK9a9rfw7ta48w3s5t6unrbx4hb foreign key (user_id) references users
+1731678448278|1|statement|alter table if exists party add constraint FKr3xd5httl0gqasj69pcxv5lf7 foreign key (address_id) references address
+1731678448279|1|statement|alter table if exists party add constraint FKps57ooh3ylfkaperh7qewfruc foreign key (type_party_id) references type_party
+1731678448280|1|statement|alter table if exists provisions add constraint FK7sknr4o2knscsosg9ikpm962h foreign key (party_id) references party
+1731678448282|1|statement|alter table if exists provisions add constraint FK6by31ui332fe0fkjt8mkq9y1u foreign key (type_provision_id) references type_provision
+1731678448284|1|statement|alter table if exists provisions add constraint FKm4bloxkrlymru3bctqtqhtsy2 foreign key (user_id) references users
+1731678448286|1|statement|alter table if exists users add constraint FKditu6lr4ek16tkxtdsne0gxib foreign key (address_id) references address
+1731678491050|2|statement|insert into users (address_id,email,family_name,name,password_hash,password_salt,username) values (NULL,'johndoe@example.com','Doe','John','hashedpassword123','saltedpassword123','johndoe123')
+1731678491059|0|statement|insert into type_party (name) values ('Admin')
+1731678491060|0|statement|insert into type_party (name) values ('User')
+1731678491077|1|statement|insert into interests (user_id,type_party_id) values (1,1)
+1731678491077|0|statement|insert into interests (user_id,type_party_id) values (1,2)
+1731678491080|0|commit|
+1731678991028|0|statement|insert into users (address_id,email,family_name,name,password_hash,password_salt,username) values (NULL,'johndoe@example.com','Doe','John','hashedpassword123','saltedpassword123','johndoe123')
+1731678991028|0|statement|insert into type_party (name) values ('Admin')
+1731678991033|0|statement|insert into type_party (name) values ('User')
+1731678991033|0|statement|insert into interests (user_id,type_party_id) values (2,3)
+1731678991036|0|statement|insert into interests (user_id,type_party_id) values (2,4)
+1731678991036|0|commit|
+1731679228153|1|statement|select u1_0.user_id,u1_0.address_id,u1_0.email,u1_0.family_name,u1_0.name,u1_0.password_hash,u1_0.password_salt,u1_0.username from users u1_0 where u1_0.user_id=1
+1731679228171|0|commit|
+1731679228172|0|commit|
+1731679228185|5|statement|insert into commentaries (author_id,commentary,created_at,note,user_id) values (1,'This is a great product! I would highly recommend it to others.','2024-11-15T15:00:28.172+0100',5,1)
+1731679228185|1|commit|
+1731681560576|0|statement|select c1_0.commentary_id,c1_0.author_id,c1_0.commentary,c1_0.created_at,c1_0.note,c1_0.user_id from commentaries c1_0
+1731681560578|0|statement|select u1_0.user_id,u1_0.address_id,u1_0.email,u1_0.family_name,u1_0.name,u1_0.password_hash,u1_0.password_salt,u1_0.username from users u1_0 where u1_0.user_id=1
+1731681560579|0|commit|
+1731681604810|0|statement|select u1_0.user_id,u1_0.address_id,u1_0.email,u1_0.family_name,u1_0.name,u1_0.password_hash,u1_0.password_salt,u1_0.username from users u1_0 where u1_0.user_id=12345
+1731681604815|0|commit|
+1731681617862|0|statement|select u1_0.user_id,u1_0.address_id,u1_0.email,u1_0.family_name,u1_0.name,u1_0.password_hash,u1_0.password_salt,u1_0.username from users u1_0 where u1_0.user_id=1
+1731681617863|0|commit|
+1731681617863|0|commit|
+1731681617864|0|statement|insert into commentaries (author_id,commentary,created_at,note,user_id) values (1,'This teabag is excellent! I love the taste and the color it gives to my tea.','2024-11-15T15:40:17.863+0100',5,1)
+1731681617865|0|commit|
+1731681635894|0|statement|select u1_0.user_id,u1_0.address_id,u1_0.email,u1_0.family_name,u1_0.name,u1_0.password_hash,u1_0.password_salt,u1_0.username from users u1_0 where u1_0.user_id=1
+1731681635895|0|commit|
+1731681635895|0|commit|
+1731681635897|0|statement|insert into commentaries (author_id,commentary,created_at,note,user_id) values (1,'This teabag is excellent! I love the taste and the color it gives to my tea.','2024-11-15T15:40:35.895+0100',5,1)
+1731681635897|0|commit|
+1731681847354|4|statement|select * from information_schema.sequences
+1731681847392|0|statement|select * from "public"."users" where 1=0
+1731681847398|0|statement|select * from "public"."users" where 1=0
+1731681847409|0|statement|select * from "public"."type_party" where 1=0
+1731681847412|0|statement|select * from "public"."users" where 1=0
+1731681847423|0|statement|select * from "public"."party" where 1=0
+1731681847427|0|statement|select * from "public"."type_provision" where 1=0
+1731681847443|0|statement|select * from "public"."party" where 1=0
+1731681847445|0|statement|select * from "public"."users" where 1=0
+1731681847455|0|statement|select * from "public"."address" where 1=0
+1731681847458|0|statement|select * from "public"."type_party" where 1=0
+1731681847468|0|statement|select * from "public"."party" where 1=0
+1731681847469|0|statement|select * from "public"."type_provision" where 1=0
+1731681847471|0|statement|select * from "public"."users" where 1=0
+1731681847480|0|statement|select * from "public"."address" where 1=0
+1733921457899|11|statement|select * from information_schema.sequences
+1733921457968|1|statement|select * from "public"."users" where 1=0
+1733921457975|0|statement|select * from "public"."users" where 1=0
+1733921457993|1|statement|select * from "public"."type_party" where 1=0
+1733921457997|0|statement|select * from "public"."users" where 1=0
+1733921458011|1|statement|select * from "public"."party" where 1=0
+1733921458016|1|statement|select * from "public"."type_provision" where 1=0
+1733921458028|0|statement|select * from "public"."party" where 1=0
+1733921458031|0|statement|select * from "public"."users" where 1=0
+1733921458042|1|statement|select * from "public"."address" where 1=0
+1733921458046|0|statement|select * from "public"."type_party" where 1=0
+1733921458056|0|statement|select * from "public"."party" where 1=0
+1733921458058|0|statement|select * from "public"."type_provision" where 1=0
+1733921458060|1|statement|select * from "public"."users" where 1=0
+1733921458072|0|statement|select * from "public"."address" where 1=0
+1733921529729|2|statement|select c1_0.commentary_id,c1_0.author_id,c1_0.commentary,c1_0.created_at,c1_0.note,c1_0.user_id from commentaries c1_0
+1733921529753|1|statement|select u1_0.user_id,u1_0.address_id,u1_0.email,u1_0.family_name,u1_0.name,u1_0.password_hash,u1_0.password_salt,u1_0.username from users u1_0 where u1_0.user_id=1
+1733921529788|1|commit|
+1733921544631|1|statement|select count(*) from commentaries c1_0 where c1_0.commentary_id=1
+1733921544633|0|commit|
+1733921544643|1|statement|select c1_0.commentary_id,c1_0.author_id,a1_0.user_id,a1_0.address_id,a1_0.email,a1_0.family_name,a1_0.name,a1_0.password_hash,a1_0.password_salt,a1_0.username,c1_0.commentary,c1_0.created_at,c1_0.note,c1_0.user_id,t1_0.user_id,t1_0.address_id,t1_0.email,t1_0.family_name,t1_0.name,t1_0.password_hash,t1_0.password_salt,t1_0.username from commentaries c1_0 join users a1_0 on a1_0.user_id=c1_0.author_id join users t1_0 on t1_0.user_id=c1_0.user_id where c1_0.commentary_id=1
+1733921544695|3|statement|delete from commentaries where commentary_id=1
+1733921544699|1|commit|
+1733921714466|1|statement|select c1_0.commentary_id,c1_0.author_id,a1_0.user_id,a1_0.address_id,a1_0.email,a1_0.family_name,a1_0.name,a1_0.password_hash,a1_0.password_salt,a1_0.username,c1_0.commentary,c1_0.created_at,c1_0.note,c1_0.user_id,t1_0.user_id,t1_0.address_id,t1_0.email,t1_0.family_name,t1_0.name,t1_0.password_hash,t1_0.password_salt,t1_0.username from commentaries c1_0 join users a1_0 on a1_0.user_id=c1_0.author_id join users t1_0 on t1_0.user_id=c1_0.user_id where c1_0.commentary_id=2
+1733921714468|0|commit|
+1733921714470|0|statement|select u1_0.user_id,u1_0.address_id,u1_0.email,u1_0.family_name,u1_0.name,u1_0.password_hash,u1_0.password_salt,u1_0.username from users u1_0 where u1_0.user_id=12345
+1733921714471|0|commit|
+1733921774665|0|statement|select c1_0.commentary_id,c1_0.author_id,a1_0.user_id,a1_0.address_id,a1_0.email,a1_0.family_name,a1_0.name,a1_0.password_hash,a1_0.password_salt,a1_0.username,c1_0.commentary,c1_0.created_at,c1_0.note,c1_0.user_id,t1_0.user_id,t1_0.address_id,t1_0.email,t1_0.family_name,t1_0.name,t1_0.password_hash,t1_0.password_salt,t1_0.username from commentaries c1_0 join users a1_0 on a1_0.user_id=c1_0.author_id join users t1_0 on t1_0.user_id=c1_0.user_id where c1_0.commentary_id=2
+1733921774665|0|commit|
+1733921774666|0|statement|select u1_0.user_id,u1_0.address_id,u1_0.email,u1_0.family_name,u1_0.name,u1_0.password_hash,u1_0.password_salt,u1_0.username from users u1_0 where u1_0.user_id=12345
+1733921774667|0|commit|
+1733921780265|0|statement|select c1_0.commentary_id,c1_0.author_id,a1_0.user_id,a1_0.address_id,a1_0.email,a1_0.family_name,a1_0.name,a1_0.password_hash,a1_0.password_salt,a1_0.username,c1_0.commentary,c1_0.created_at,c1_0.note,c1_0.user_id,t1_0.user_id,t1_0.address_id,t1_0.email,t1_0.family_name,t1_0.name,t1_0.password_hash,t1_0.password_salt,t1_0.username from commentaries c1_0 join users a1_0 on a1_0.user_id=c1_0.author_id join users t1_0 on t1_0.user_id=c1_0.user_id where c1_0.commentary_id=2
+1733921780266|0|commit|
+1733921780266|0|commit|
+1733921780267|0|statement|select u1_0.user_id,u1_0.address_id,u1_0.email,u1_0.family_name,u1_0.name,u1_0.password_hash,u1_0.password_salt,u1_0.username from users u1_0 where u1_0.user_id=2
+1733921780268|0|commit|
+1733921780279|1|statement|update commentaries set author_id=1,commentary='Great work on the recent project! Very detailed and thorough.',note=1,user_id=2 where commentary_id=2
+1733921780281|0|commit|

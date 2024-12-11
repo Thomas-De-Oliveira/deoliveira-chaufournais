@@ -5,8 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
 
-import java.util.Set;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "commentaries")
@@ -15,10 +16,12 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Commentaries {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "commentary_id")
     private Long id;
+
     private Integer note;
     private String commentary;
 
@@ -26,10 +29,11 @@ public class Commentaries {
     @JoinColumn(name = "author_id", nullable = false)
     private Users author;
 
-    // Relation vers l'utilisateur qui est commenté
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private Users target;
 
-
+    @CreationTimestamp
+    @Column(name = "created_at", nullable = false, updatable = false)
+    private LocalDateTime createdAt;
 }
