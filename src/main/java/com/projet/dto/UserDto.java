@@ -1,6 +1,7 @@
 package com.projet.dto;
 
 
+import com.projet.entity.Address;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,5 +22,6 @@ public class UserDto {
     private String email;
     private String passwordHash;
     private String passwordSalt;
+    private Address address;
     private List<TypePartyDto> typeParties;
 }

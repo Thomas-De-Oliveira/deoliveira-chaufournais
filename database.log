@@ -129,3 +129,201 @@
 1731674560404|0|statement|alter table if exists provisions add constraint FK6by31ui332fe0fkjt8mkq9y1u foreign key (type_provision_id) references type_provision
 1731674560406|1|statement|alter table if exists provisions add constraint FKm4bloxkrlymru3bctqtqhtsy2 foreign key (user_id) references users
 1731674560407|1|statement|alter table if exists users add constraint FKditu6lr4ek16tkxtdsne0gxib foreign key (address_id) references address
+1731676483933|9|statement|select * from information_schema.sequences
+1731676483964|0|statement|select * from "public"."users" where 1=0
+1731676483969|0|statement|select * from "public"."users" where 1=0
+1731676483978|0|statement|select * from "public"."type_party" where 1=0
+1731676483981|0|statement|select * from "public"."users" where 1=0
+1731676483988|0|statement|select * from "public"."party" where 1=0
+1731676483993|0|statement|select * from "public"."type_provision" where 1=0
+1731676484001|0|statement|select * from "public"."party" where 1=0
+1731676484003|0|statement|select * from "public"."users" where 1=0
+1731676484010|0|statement|select * from "public"."address" where 1=0
+1731676484014|0|statement|select * from "public"."type_party" where 1=0
+1731676484020|0|statement|select * from "public"."party" where 1=0
+1731676484021|0|statement|select * from "public"."type_provision" where 1=0
+1731676484023|0|statement|select * from "public"."users" where 1=0
+1731676484031|0|statement|select * from "public"."address" where 1=0
+1731676484929|0|statement|select count(*) from users u1_0
+1731676484931|0|commit|
+1731676485108|1|statement|select u1_0.user_id,a1_0.address_id,a1_0.city,a1_0.country,cr1_0.user_id,cr1_0.commentary_id,cr1_0.author_id,a2_0.user_id,a3_0.address_id,a3_0.city,a3_0.country,a2_0.email,a2_0.family_name,a2_0.name,a2_0.password_hash,a2_0.password_salt,a2_0.username,cr1_0.commentary,cr1_0.note,u1_0.email,u1_0.family_name,u1_0.name,u1_0.password_hash,u1_0.password_salt,u1_0.username from users u1_0 left join address a1_0 on a1_0.address_id=u1_0.address_id left join commentaries cr1_0 on u1_0.user_id=cr1_0.user_id left join users a2_0 on a2_0.user_id=cr1_0.author_id left join address a3_0 on a3_0.address_id=a2_0.address_id where u1_0.user_id=1
+1731676485127|3|statement|insert into users (address_id,email,family_name,name,password_hash,password_salt,username) values (NULL,'john.doe@example.com','Doe','John','LV4EJtfh4xNChDRHraqfXbL5jQBOL37VAzrSyyJ7zHY+0uoP/z6I0ZbYQ/RSpYkw3aoNnBNCbnB4xYWmj3fIKw==','ICkSJxhx9R0XnbgE5r68Tg==','johndoe')
+1731676485137|0|commit|
+1731676485139|0|statement|select u1_0.user_id,a1_0.address_id,a1_0.city,a1_0.country,cr1_0.user_id,cr1_0.commentary_id,cr1_0.author_id,a2_0.user_id,a3_0.address_id,a3_0.city,a3_0.country,a2_0.email,a2_0.family_name,a2_0.name,a2_0.password_hash,a2_0.password_salt,a2_0.username,cr1_0.commentary,cr1_0.note,u1_0.email,u1_0.family_name,u1_0.name,u1_0.password_hash,u1_0.password_salt,u1_0.username from users u1_0 left join address a1_0 on a1_0.address_id=u1_0.address_id left join commentaries cr1_0 on u1_0.user_id=cr1_0.user_id left join users a2_0 on a2_0.user_id=cr1_0.author_id left join address a3_0 on a3_0.address_id=a2_0.address_id where u1_0.user_id=2
+1731676485140|0|statement|insert into users (address_id,email,family_name,name,password_hash,password_salt,username) values (NULL,'jane.smith@example.com','Smith','Jane','LV4EJtfh4xNChDRHraqfXbL5jQBOL37VAzrSyyJ7zHY+0uoP/z6I0ZbYQ/RSpYkw3aoNnBNCbnB4xYWmj3fIKw==','ICkSJxhx9R0XnbgE5r68Tg==','janesmith')
+1731676485140|0|commit|
+1731677006468|7|statement|select * from information_schema.sequences
+1731677006502|0|statement|select * from "public"."users" where 1=0
+1731677006507|0|statement|select * from "public"."users" where 1=0
+1731677006515|0|statement|select * from "public"."type_party" where 1=0
+1731677006518|0|statement|select * from "public"."users" where 1=0
+1731677006526|0|statement|select * from "public"."party" where 1=0
+1731677006529|0|statement|select * from "public"."type_provision" where 1=0
+1731677006539|0|statement|select * from "public"."party" where 1=0
+1731677006541|0|statement|select * from "public"."users" where 1=0
+1731677006549|0|statement|select * from "public"."address" where 1=0
+1731677006552|0|statement|select * from "public"."type_party" where 1=0
+1731677006559|0|statement|select * from "public"."party" where 1=0
+1731677006561|0|statement|select * from "public"."type_provision" where 1=0
+1731677006562|0|statement|select * from "public"."users" where 1=0
+1731677006570|0|statement|select * from "public"."address" where 1=0
+1731677007435|0|statement|select count(*) from users u1_0
+1731677007438|0|commit|
+1731677007440|0|statement|select count(*) from address a1_0
+1731677007440|0|commit|
+1731677007452|1|statement|insert into address (city,country) values ('Paris','France')
+1731677007458|0|commit|
+1731677007459|0|statement|insert into address (city,country) values ('Lyon','France')
+1731677007459|0|commit|
+1731677007460|0|statement|insert into address (city,country) values ('Nice','France')
+1731677007460|0|commit|
+1731677007461|0|statement|insert into address (city,country) values ('Marseille','France')
+1731677007461|0|commit|
+1731677007462|0|statement|insert into address (city,country) values ('Monaco','France')
+1731677007462|0|commit|
+1731677007463|0|statement|insert into address (city,country) values ('Strasbourg','France')
+1731677007464|0|commit|
+1731677237371|8|statement|select * from information_schema.sequences
+1731677237407|1|statement|select * from "public"."users" where 1=0
+1731677237413|0|statement|select * from "public"."users" where 1=0
+1731677237424|1|statement|select * from "public"."type_party" where 1=0
+1731677237428|0|statement|select * from "public"."users" where 1=0
+1731677237438|1|statement|select * from "public"."party" where 1=0
+1731677237443|0|statement|select * from "public"."type_provision" where 1=0
+1731677237454|0|statement|select * from "public"."party" where 1=0
+1731677237456|0|statement|select * from "public"."users" where 1=0
+1731677237465|1|statement|select * from "public"."address" where 1=0
+1731677237474|0|statement|select * from "public"."type_party" where 1=0
+1731677237482|0|statement|select * from "public"."party" where 1=0
+1731677237484|0|statement|select * from "public"."type_provision" where 1=0
+1731677237486|0|statement|select * from "public"."users" where 1=0
+1731677237493|0|statement|select * from "public"."address" where 1=0
+1731677238408|0|statement|select count(*) from users u1_0
+1731677238411|0|commit|
+1731677238586|1|statement|select u1_0.user_id,a1_0.address_id,a1_0.city,a1_0.country,cr1_0.user_id,cr1_0.commentary_id,cr1_0.author_id,a2_0.user_id,a3_0.address_id,a3_0.city,a3_0.country,a2_0.email,a2_0.family_name,a2_0.name,a2_0.password_hash,a2_0.password_salt,a2_0.username,cr1_0.commentary,cr1_0.note,u1_0.email,u1_0.family_name,u1_0.name,u1_0.password_hash,u1_0.password_salt,u1_0.username from users u1_0 left join address a1_0 on a1_0.address_id=u1_0.address_id left join commentaries cr1_0 on u1_0.user_id=cr1_0.user_id left join users a2_0 on a2_0.user_id=cr1_0.author_id left join address a3_0 on a3_0.address_id=a2_0.address_id where u1_0.user_id=1
+1731677238599|0|statement|insert into users (address_id,email,family_name,name,password_hash,password_salt,username) values (NULL,'john.doe@example.com','Doe','John','VYFYEIMmsy+xMkMXN0vi28wowNq7oCron1GUjO5tod+tz6uNl8Vrq2SyfzlfW1Iu18KVhaTDjQD6g0WDFss9ig==','e+/uchMAJpLb2DuHcS7OeQ==','johndoe')
+1731677238610|1|commit|
+1731677238612|0|statement|select u1_0.user_id,a1_0.address_id,a1_0.city,a1_0.country,cr1_0.user_id,cr1_0.commentary_id,cr1_0.author_id,a2_0.user_id,a3_0.address_id,a3_0.city,a3_0.country,a2_0.email,a2_0.family_name,a2_0.name,a2_0.password_hash,a2_0.password_salt,a2_0.username,cr1_0.commentary,cr1_0.note,u1_0.email,u1_0.family_name,u1_0.name,u1_0.password_hash,u1_0.password_salt,u1_0.username from users u1_0 left join address a1_0 on a1_0.address_id=u1_0.address_id left join commentaries cr1_0 on u1_0.user_id=cr1_0.user_id left join users a2_0 on a2_0.user_id=cr1_0.author_id left join address a3_0 on a3_0.address_id=a2_0.address_id where u1_0.user_id=2
+1731677238612|0|statement|insert into users (address_id,email,family_name,name,password_hash,password_salt,username) values (NULL,'jane.smith@example.com','Smith','Jane','VYFYEIMmsy+xMkMXN0vi28wowNq7oCron1GUjO5tod+tz6uNl8Vrq2SyfzlfW1Iu18KVhaTDjQD6g0WDFss9ig==','e+/uchMAJpLb2DuHcS7OeQ==','janesmith')
+1731677238613|0|commit|
+1731677238614|0|statement|select count(*) from address a1_0
+1731677238614|0|commit|
+1731677401774|6|statement|select * from information_schema.sequences
+1731677401804|0|statement|select * from "public"."users" where 1=0
+1731677401808|0|statement|select * from "public"."users" where 1=0
+1731677401816|0|statement|select * from "public"."type_party" where 1=0
+1731677401819|0|statement|select * from "public"."users" where 1=0
+1731677401826|0|statement|select * from "public"."party" where 1=0
+1731677401829|0|statement|select * from "public"."type_provision" where 1=0
+1731677401838|0|statement|select * from "public"."party" where 1=0
+1731677401839|0|statement|select * from "public"."users" where 1=0
+1731677401847|0|statement|select * from "public"."address" where 1=0
+1731677401850|0|statement|select * from "public"."type_party" where 1=0
+1731677401857|0|statement|select * from "public"."party" where 1=0
+1731677401858|0|statement|select * from "public"."type_provision" where 1=0
+1731677401859|0|statement|select * from "public"."users" where 1=0
+1731677401866|0|statement|select * from "public"."address" where 1=0
+1731677402822|1|statement|select count(*) from users u1_0
+1731677402826|0|commit|
+1731677403003|1|statement|select u1_0.user_id,a1_0.address_id,a1_0.city,a1_0.country,cr1_0.user_id,cr1_0.commentary_id,cr1_0.author_id,a2_0.user_id,a3_0.address_id,a3_0.city,a3_0.country,a2_0.email,a2_0.family_name,a2_0.name,a2_0.password_hash,a2_0.password_salt,a2_0.username,cr1_0.commentary,cr1_0.note,u1_0.email,u1_0.family_name,u1_0.name,u1_0.password_hash,u1_0.password_salt,u1_0.username from users u1_0 left join address a1_0 on a1_0.address_id=u1_0.address_id left join commentaries cr1_0 on u1_0.user_id=cr1_0.user_id left join users a2_0 on a2_0.user_id=cr1_0.author_id left join address a3_0 on a3_0.address_id=a2_0.address_id where u1_0.user_id=1
+1731677403016|0|statement|insert into users (address_id,email,family_name,name,password_hash,password_salt,username) values (NULL,'john.doe@example.com','Doe','John','GtYVpadvb7BsyPHtK9a+TZkw0adM3gblF8XN6CiQZ8Zrol0Xjl/46oOZdvKuWTr2VkpFdkIZVotRuEFQgTlH8w==','tFPxzjo/DUkSQV5+B3t9Hw==','johndoe')
+1731677403034|3|commit|
+1731677403037|0|statement|select u1_0.user_id,a1_0.address_id,a1_0.city,a1_0.country,cr1_0.user_id,cr1_0.commentary_id,cr1_0.author_id,a2_0.user_id,a3_0.address_id,a3_0.city,a3_0.country,a2_0.email,a2_0.family_name,a2_0.name,a2_0.password_hash,a2_0.password_salt,a2_0.username,cr1_0.commentary,cr1_0.note,u1_0.email,u1_0.family_name,u1_0.name,u1_0.password_hash,u1_0.password_salt,u1_0.username from users u1_0 left join address a1_0 on a1_0.address_id=u1_0.address_id left join commentaries cr1_0 on u1_0.user_id=cr1_0.user_id left join users a2_0 on a2_0.user_id=cr1_0.author_id left join address a3_0 on a3_0.address_id=a2_0.address_id where u1_0.user_id=2
+1731677403038|0|statement|insert into users (address_id,email,family_name,name,password_hash,password_salt,username) values (NULL,'jane.smith@example.com','Smith','Jane','GtYVpadvb7BsyPHtK9a+TZkw0adM3gblF8XN6CiQZ8Zrol0Xjl/46oOZdvKuWTr2VkpFdkIZVotRuEFQgTlH8w==','tFPxzjo/DUkSQV5+B3t9Hw==','janesmith')
+1731677403039|0|commit|
+1731677403041|0|statement|select count(*) from address a1_0
+1731677403041|0|commit|
+1731677597511|6|statement|select * from information_schema.sequences
+1731677597539|0|statement|select * from "public"."users" where 1=0
+1731677597544|0|statement|select * from "public"."users" where 1=0
+1731677597552|0|statement|select * from "public"."type_party" where 1=0
+1731677597555|0|statement|select * from "public"."users" where 1=0
+1731677597563|0|statement|select * from "public"."party" where 1=0
+1731677597566|0|statement|select * from "public"."type_provision" where 1=0
+1731677597576|0|statement|select * from "public"."party" where 1=0
+1731677597577|0|statement|select * from "public"."users" where 1=0
+1731677597586|0|statement|select * from "public"."address" where 1=0
+1731677597588|0|statement|select * from "public"."type_party" where 1=0
+1731677597594|0|statement|select * from "public"."party" where 1=0
+1731677597595|0|statement|select * from "public"."type_provision" where 1=0
+1731677597597|0|statement|select * from "public"."users" where 1=0
+1731677597604|0|statement|select * from "public"."address" where 1=0
+1731677598448|0|statement|select count(*) from users u1_0
+1731677598450|0|commit|
+1731677598617|0|rollback|
+1731677713009|5|statement|select * from information_schema.sequences
+1731677713039|0|statement|select * from "public"."users" where 1=0
+1731677713044|0|statement|select * from "public"."users" where 1=0
+1731677713052|0|statement|select * from "public"."type_party" where 1=0
+1731677713055|0|statement|select * from "public"."users" where 1=0
+1731677713063|0|statement|select * from "public"."party" where 1=0
+1731677713068|0|statement|select * from "public"."type_provision" where 1=0
+1731677713075|0|statement|select * from "public"."party" where 1=0
+1731677713078|0|statement|select * from "public"."users" where 1=0
+1731677713086|0|statement|select * from "public"."address" where 1=0
+1731677713089|0|statement|select * from "public"."type_party" where 1=0
+1731677713096|0|statement|select * from "public"."party" where 1=0
+1731677713097|0|statement|select * from "public"."type_provision" where 1=0
+1731677713098|0|statement|select * from "public"."users" where 1=0
+1731677713105|0|statement|select * from "public"."address" where 1=0
+1731677713957|0|statement|select count(*) from users u1_0
+1731677713960|0|commit|
+1731677714127|0|rollback|
+1731678069028|6|statement|select * from information_schema.sequences
+1731678069059|0|statement|select * from "public"."users" where 1=0
+1731678069064|0|statement|select * from "public"."users" where 1=0
+1731678069072|0|statement|select * from "public"."type_party" where 1=0
+1731678069075|0|statement|select * from "public"."users" where 1=0
+1731678069083|0|statement|select * from "public"."party" where 1=0
+1731678069086|0|statement|select * from "public"."type_provision" where 1=0
+1731678069094|0|statement|select * from "public"."party" where 1=0
+1731678069096|0|statement|select * from "public"."users" where 1=0
+1731678069104|0|statement|select * from "public"."address" where 1=0
+1731678069108|0|statement|select * from "public"."type_party" where 1=0
+1731678069115|0|statement|select * from "public"."party" where 1=0
+1731678069116|0|statement|select * from "public"."type_provision" where 1=0
+1731678069117|0|statement|select * from "public"."users" where 1=0
+1731678069124|0|statement|select * from "public"."address" where 1=0
+1731678069963|0|statement|select count(*) from users u1_0
+1731678069965|0|commit|
+1731678070128|0|rollback|
+1731678439876|6|statement|select * from information_schema.sequences
+1731678439906|0|statement|select * from "public"."users" where 1=0
+1731678439911|0|statement|select * from "public"."users" where 1=0
+1731678439919|0|statement|select * from "public"."type_party" where 1=0
+1731678439922|0|statement|select * from "public"."users" where 1=0
+1731678439930|0|statement|select * from "public"."party" where 1=0
+1731678439934|0|statement|select * from "public"."type_provision" where 1=0
+1731678439942|0|statement|select * from "public"."party" where 1=0
+1731678439944|0|statement|select * from "public"."users" where 1=0
+1731678439952|0|statement|select * from "public"."address" where 1=0
+1731678439955|0|statement|select * from "public"."type_party" where 1=0
+1731678439962|0|statement|select * from "public"."party" where 1=0
+1731678439964|0|statement|select * from "public"."type_provision" where 1=0
+1731678439965|0|statement|select * from "public"."users" where 1=0
+1731678439971|0|statement|select * from "public"."address" where 1=0
+1731678440823|0|statement|select count(*) from users u1_0
+1731678440827|0|commit|
+1731678440992|0|statement|select a1_0.address_id,a1_0.city,a1_0.country from address a1_0 where a1_0.address_id=1
+1731678440995|0|commit|
+1731678441001|0|rollback|
+1731678696051|6|statement|select * from information_schema.sequences
+1731678696080|0|statement|select * from "public"."users" where 1=0
+1731678696085|0|statement|select * from "public"."users" where 1=0
+1731678696094|0|statement|select * from "public"."type_party" where 1=0
+1731678696097|0|statement|select * from "public"."users" where 1=0
+1731678696104|0|statement|select * from "public"."party" where 1=0
+1731678696108|0|statement|select * from "public"."type_provision" where 1=0
+1731678696117|0|statement|select * from "public"."party" where 1=0
+1731678696118|0|statement|select * from "public"."users" where 1=0
+1731678696126|0|statement|select * from "public"."address" where 1=0
+1731678696130|0|statement|select * from "public"."type_party" where 1=0
+1731678696136|0|statement|select * from "public"."party" where 1=0
+1731678696138|0|statement|select * from "public"."type_provision" where 1=0
+1731678696139|0|statement|select * from "public"."users" where 1=0
+1731678696146|0|statement|select * from "public"."address" where 1=0
+1731678696993|0|statement|select count(*) from users u1_0
+1731678696996|0|commit|
+1731678697160|0|statement|select a1_0.address_id,a1_0.city,a1_0.country from address a1_0 where a1_0.address_id=1
+1731678697163|0|commit|
+1731678697170|0|rollback|
