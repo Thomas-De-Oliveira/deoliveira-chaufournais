@@ -21,6 +21,6 @@ public class UserCreationDto {
     private Integer age;
     private String email;
     private String password;
-    private Address address;
+    private Long addressId;
     private List<TypePartyDto> typeParties;
 }

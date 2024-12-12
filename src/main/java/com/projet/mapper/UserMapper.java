@@ -1,6 +1,7 @@
 package com.projet.mapper;
 
 
+import com.projet.dto.UserCreationDto;
 import com.projet.dto.UserDto;
 import com.projet.entity.Users;
 import org.mapstruct.Mapper;
@@ -13,4 +14,6 @@ public interface UserMapper {
     Users toEntity(UserDto userDto);
     List<UserDto> toDtos(List<Users> users);
     List<Users> toEntities(List<UserDto> userDtos);
+
+    Users toEntity(UserCreationDto user1Dto);
 }

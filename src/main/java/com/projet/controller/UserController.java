@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/users")
@@ -22,6 +23,16 @@ public class UserController {
     {
         Pageable pageable = PageRequest.of(page, size);
         return ResponseEntity.ok(userService.getAllUsers(pageable));
+    }
+
+    @PostMapping("/login")
+    public UserDto getUserByUsername(@RequestParam String username, @RequestParam String password) throws Exception {
+        Optional<UserDto> user = userService.getUserByUsername(username, password);
+        if (user.isPresent()) {
+            return user.get();
+        } else {
+            throw new RuntimeException("Invalid username or password");
+        }
     }
 
     @GetMapping("/{id}")
