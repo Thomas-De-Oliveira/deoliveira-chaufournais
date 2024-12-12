@@ -1,5 +1,6 @@
 package com.projet.controller;
 
+import com.projet.dto.UserCreationDto;
 import com.projet.dto.UserDto;
 import com.projet.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +31,7 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<UserDto> save(@RequestBody UserDto userDto) {
+    public ResponseEntity<UserDto> save(@RequestBody UserCreationDto userDto) throws Exception {
         return ResponseEntity.ok(userService.createUser(userDto));
     }
 

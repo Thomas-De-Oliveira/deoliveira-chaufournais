@@ -1,11 +1,13 @@
 package com.projet.service;
 
+import com.projet.dto.UserCreationDto;
 import com.projet.dto.UserDto;
 import com.projet.entity.Users;
 import com.projet.exception.RessourceNotFoundException;
 import com.projet.mapper.TypePartyMapper;
 import com.projet.mapper.UserMapper;
 import com.projet.repository.UserRepository;
+import com.projet.utils.PasswordUtils;
 import org.springframework.data.domain.Pageable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,8 +31,22 @@ public class UserService {
         this.typePartyMapper = typePartyMapper;
     }
 
-    // Méthode pour créer un utilisateur
-    public UserDto createUser(UserDto userDto) {
+    public UserDto createUser(UserCreationDto userCreationDto) throws Exception {
+        String salt = PasswordUtils.generateSalt();
+
+        String passwordHash = PasswordUtils.hashPassword(userCreationDto.getPassword(), salt);
+
+        UserDto userDto = new UserDto();
+        userDto.setFamilyName(userCreationDto.getFamilyName());
+        userDto.setName(userCreationDto.getName());
+        userDto.setUsername(userCreationDto.getUsername());
+        userDto.setAge(userCreationDto.getAge());
+        userDto.setEmail(userCreationDto.getEmail());
+        userDto.setPasswordHash(passwordHash);
+        userDto.setPasswordSalt(salt);
+        userDto.setAddress(userCreationDto.getAddress());
+        userDto.setTypeParties(userCreationDto.getTypeParties());
+
         Users user = userMapper.toEntity(userDto);
         Users savedUser = userRepository.save(user);
         return userMapper.toDto(savedUser);
