@@ -9,7 +9,9 @@ import lombok.Setter;
 import java.util.Set;
 
 @Entity
-@Table(name = "type_party")
+@Table(name = "type_party", indexes = {
+        @Index(name = "idx_type_party_users", columnList = "type_party_id")
+})
 @Getter
 @Setter
 @AllArgsConstructor
@@ -21,7 +23,7 @@ public class TypeParty {
     private Long id;
     private String name;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "interests", joinColumns = @JoinColumn(name = "type_party_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
     private Set<Users> users;
 }

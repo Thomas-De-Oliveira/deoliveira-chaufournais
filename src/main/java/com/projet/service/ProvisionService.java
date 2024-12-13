@@ -5,6 +5,8 @@ import com.projet.entity.Provisions;
 import com.projet.mapper.ProvisionMapper;
 import com.projet.repository.ProvisionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,6 +24,11 @@ public class ProvisionService {
 
     public ProvisionsDto convertToDto(Provisions provision) {
         return provisionMapper.toDto(provision);
+    }
+
+    public Page<ProvisionsDto> getAllProvisions(Pageable pageable) {
+        Page<Provisions> provisionPage = provisionRepository.findAll(pageable);
+        return provisionPage.map(this::convertToDto);
     }
 
     public ProvisionsDto getProvisionById(Long id) {

@@ -5,6 +5,8 @@ import com.projet.entity.Participate;
 import com.projet.mapper.ParticipateMapper;
 import com.projet.repository.ParticipateRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,6 +24,11 @@ public class ParticipateService {
 
     public ParticipateDto convertToDto(Participate participate) {
         return participateMapper.toDto(participate);
+    }
+
+    public Page<ParticipateDto> getAllParticipates(Pageable pageable) {
+        Page<Participate> participatePage = participateRepository.findAll(pageable);
+        return participatePage.map(this::convertToDto);
     }
 
     public ParticipateDto getParticipateById(Long id) {

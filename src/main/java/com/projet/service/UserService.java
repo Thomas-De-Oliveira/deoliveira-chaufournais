@@ -10,8 +10,9 @@ import com.projet.mapper.UserMapper;
 import com.projet.repository.AddressRepository;
 import com.projet.repository.UserRepository;
 import com.projet.utils.PasswordUtils;
-import org.springframework.data.domain.Pageable;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -60,8 +61,10 @@ public class UserService {
     }
 
     public List<UserDto> getAllUsers(Pageable pageable) {
-        return userRepository.findAll(pageable).map(userMapper::toDto).getContent();
-
+        Page<Users> usersPage = userRepository.findAll(pageable);
+        return usersPage.stream() // Convertit le Page<User> en List<User>
+                .map(userMapper::toDto)
+                .collect(Collectors.toList());
     }
 
     public UserDto getUserById(Long id) {
@@ -101,7 +104,7 @@ public class UserService {
         existingUser.setTypeParties(
                 userDto.getTypeParties() != null ?
                         userDto.getTypeParties().stream()
-                                .map(typePartyDto -> typePartyMapper.toEntity(typePartyDto))
+                                .map(typePartyMapper::toEntity)
                                 .collect(Collectors.toSet()) :
                         existingUser.getTypeParties()
         );
@@ -110,7 +113,6 @@ public class UserService {
         return userMapper.toDto(updatedUser);
     }
 
-    // Méthode pour supprimer un utilisateur par son ID
     public void deleteUser(Long id) {
         Users user = userRepository.findById(id)
                 .orElseThrow(() -> new RessourceNotFoundException("Utilisateur non trouvé avec l'ID : " + id));

@@ -5,6 +5,8 @@ import com.projet.entity.TypeParty;
 import com.projet.mapper.TypePartyMapper;
 import com.projet.repository.TypePartyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -34,6 +36,11 @@ public class TypePartyService {
         return typeParties.stream()
                 .map(this::convertToDto)
                 .collect(Collectors.toList());
+    }
+
+    public Page<TypePartyDto> getAllTypeParties(Pageable pageable) {
+        Page<TypeParty> typePartyPage = typePartyRepository.findAll(pageable);
+        return typePartyPage.map(this::convertToDto);
     }
 
     public TypePartyDto createTypeParty(TypePartyDto typePartyDto) {

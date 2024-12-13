@@ -9,7 +9,11 @@ import lombok.Setter;
 import java.util.Set;
 
 @Entity
-@Table(name = "provisions")
+@Table(name = "provisions", indexes = {
+        @Index(name = "idx_provisions_party_id", columnList = "party_id"),
+        @Index(name = "idx_provisions_user_id", columnList = "user_id"),
+        @Index(name = "idx_provisions_type_provision_id", columnList = "type_provision_id")
+})
 @Getter
 @Setter
 @AllArgsConstructor
@@ -19,9 +23,9 @@ public class Provisions {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "provision_id")
     private Long id;
-    private  String provision;
+    private String provision;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "party_id")
     private Party party;
 
@@ -32,5 +36,4 @@ public class Provisions {
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "type_provision_id")
     private TypeProvision typeProvision;
-
 }

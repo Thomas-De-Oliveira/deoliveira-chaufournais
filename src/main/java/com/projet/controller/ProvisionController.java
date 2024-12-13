@@ -3,6 +3,8 @@ package com.projet.controller;
 import com.projet.dto.ProvisionsDto;
 import com.projet.service.ProvisionService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,10 +26,13 @@ public class ProvisionController {
         return ResponseEntity.notFound().build();
     }
 
+    // Récupérer toutes les provisions avec pagination
     @GetMapping
-    public ResponseEntity<List<ProvisionsDto>> getAllProvisions() {
-        List<ProvisionsDto> provisionsDtoList = provisionService.getAllProvisions();
-        return ResponseEntity.ok(provisionsDtoList);
+    public ResponseEntity<List<ProvisionsDto>> getAllProvisions(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "5") int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        return ResponseEntity.ok(provisionService.getAllProvisions(pageable).getContent());
     }
 
     @PostMapping

@@ -3,6 +3,8 @@ package com.projet.controller;
 import com.projet.dto.PartyDto;
 import com.projet.service.PartyService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,10 +26,13 @@ public class PartyController {
         return ResponseEntity.notFound().build();
     }
 
+    // Récupérer toutes les fêtes avec pagination
     @GetMapping
-    public ResponseEntity<List<PartyDto>> getAllParties() {
-        List<PartyDto> partyDtoList = partyService.getAllParties();
-        return ResponseEntity.ok(partyDtoList);
+    public ResponseEntity<List<PartyDto>> getAllParties(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "5") int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        return ResponseEntity.ok(partyService.getAllParties(pageable).getContent());
     }
 
     @PostMapping

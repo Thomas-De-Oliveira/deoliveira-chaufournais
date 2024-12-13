@@ -3,6 +3,8 @@ package com.projet.controller;
 import com.projet.dto.ParticipateDto;
 import com.projet.service.ParticipateService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,11 +26,13 @@ public class ParticipateController {
         return ResponseEntity.notFound().build();
     }
 
-    // Récupérer toutes les participations
+    // Récupérer toutes les participations avec pagination
     @GetMapping
-    public ResponseEntity<List<ParticipateDto>> getAllParticipates() {
-        List<ParticipateDto> participateDtoList = participateService.getAllParticipates();
-        return ResponseEntity.ok(participateDtoList);
+    public ResponseEntity<List<ParticipateDto>> getAllParticipates(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "5") int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        return ResponseEntity.ok(participateService.getAllParticipates(pageable).getContent());
     }
 
     // Créer une nouvelle participation

@@ -5,10 +5,13 @@ import com.projet.entity.TypeProvision;
 import com.projet.mapper.TypeProvisionMapper;
 import com.projet.repository.TypeProvisionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class TypeProvisionService {
@@ -27,6 +30,11 @@ public class TypeProvisionService {
     public List<TypeProvisionDto> getAllTypeProvisions() {
         List<TypeProvision> typeProvisions = typeProvisionRepository.findAll();
         return typeProvisionMapper.toDtos(typeProvisions);
+    }
+
+    public Page<TypeProvisionDto> getAllTypeProvisions(Pageable pageable) {
+        Page<TypeProvision> typeProvisionPage = typeProvisionRepository.findAll(pageable);
+        return typeProvisionPage.map(typeProvisionMapper::toDto);
     }
 
     public TypeProvisionDto createTypeProvision(TypeProvisionDto typeProvisionDto) {

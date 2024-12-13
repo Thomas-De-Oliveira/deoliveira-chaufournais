@@ -80,3 +80,200 @@
 1733927635318|0|commit|
 1733927690457|5|statement|select p1_0.participate_id,p1_0.organiser,p1_0.party_id,p1_0.user_id,p1_0.validation from participate p1_0
 1733927690458|0|commit|
+1733928110167|5|statement|select * from information_schema.sequences
+1733928110203|0|statement|select * from "public"."users" where 1=0
+1733928110209|0|statement|select * from "public"."users" where 1=0
+1733928110222|0|statement|select * from "public"."type_party" where 1=0
+1733928110225|0|statement|select * from "public"."users" where 1=0
+1733928110235|0|statement|select * from "public"."party" where 1=0
+1733928110239|0|statement|select * from "public"."type_provision" where 1=0
+1733928110251|0|statement|select * from "public"."party" where 1=0
+1733928110252|0|statement|select * from "public"."users" where 1=0
+1733928110264|0|statement|select * from "public"."address" where 1=0
+1733928110268|0|statement|select * from "public"."type_party" where 1=0
+1733928110279|0|statement|select * from "public"."party" where 1=0
+1733928110281|0|statement|select * from "public"."type_provision" where 1=0
+1733928110283|0|statement|select * from "public"."users" where 1=0
+1733928110293|0|statement|select * from "public"."address" where 1=0
+1733928111784|0|statement|select count(*) from users u1_0
+1733928111787|0|commit|
+1733928111790|0|statement|select count(*) from address a1_0
+1733928111790|0|commit|
+1733928145190|1|statement|select tp1_0.type_provision_id,tp1_0.name from type_provision tp1_0
+1733928145191|0|commit|
+1733928158559|1|statement|select tp1_0.type_party_id,tp1_0.name from type_party tp1_0
+1733928158587|0|commit|
+1734094008232|45|statement|select * from information_schema.sequences
+1734094008324|13|statement|create index idx_address_city on address (city)
+1734094008328|3|statement|create index idx_address_country on address (country)
+1734094008335|4|statement|create index idx_commentary_note on commentaries (note)
+1734094008340|4|statement|create index idx_commentary_created_at on commentaries (created_at)
+1734094008346|5|statement|create index idx_commentary_author_id on commentaries (author_id)
+1734094008351|4|statement|create index idx_commentary_user_id on commentaries (user_id)
+1734094008363|5|statement|create index idx_participate_party_id on participate (party_id)
+1734094008367|4|statement|create index idx_participate_user_id on participate (user_id)
+1734094008377|4|statement|create index idx_party_type_party_id on party (type_party_id)
+1734094008381|3|statement|create index idx_party_address_id on party (address_id)
+1734094008385|3|statement|create index idx_need_for_party_party_id on party (party_id)
+1734094008393|4|statement|create index idx_provisions_party_id on provisions (party_id)
+1734094008397|3|statement|create index idx_provisions_user_id on provisions (user_id)
+1734094008401|3|statement|create index idx_provisions_type_provision_id on provisions (type_provision_id)
+1734094008411|5|statement|create index idx_type_party_users on type_party (type_party_id)
+1734094008420|4|statement|create index idx_type_provision_party on type_provision (type_provision_id)
+1734094008429|5|statement|create index idx_users_username on users (username)
+1734094008434|3|statement|create index idx_users_email on users (email)
+1734094008465|1|statement|select * from "public"."users" where 1=0
+1734094008472|0|statement|select * from "public"."users" where 1=0
+1734094008494|1|statement|select * from "public"."type_party" where 1=0
+1734094008498|0|statement|select * from "public"."users" where 1=0
+1734094008523|1|statement|select * from "public"."party" where 1=0
+1734094008528|0|statement|select * from "public"."type_provision" where 1=0
+1734094008551|0|statement|select * from "public"."party" where 1=0
+1734094008553|0|statement|select * from "public"."users" where 1=0
+1734094008564|1|statement|select * from "public"."address" where 1=0
+1734094008569|0|statement|select * from "public"."type_party" where 1=0
+1734094008579|0|statement|select * from "public"."party" where 1=0
+1734094008581|0|statement|select * from "public"."type_provision" where 1=0
+1734094008583|1|statement|select * from "public"."users" where 1=0
+1734094008596|0|statement|select * from "public"."address" where 1=0
+1734094008679|4|statement|select * from information_schema.sequences
+1734094008778|0|statement|select * from "public"."users" where 1=0
+1734094008785|0|statement|select * from "public"."users" where 1=0
+1734094008797|0|statement|select * from "public"."type_party" where 1=0
+1734094008801|0|statement|select * from "public"."users" where 1=0
+1734094008813|0|statement|select * from "public"."party" where 1=0
+1734094008817|0|statement|select * from "public"."type_provision" where 1=0
+1734094008829|0|statement|select * from "public"."party" where 1=0
+1734094008832|0|statement|select * from "public"."users" where 1=0
+1734094008846|0|statement|select * from "public"."address" where 1=0
+1734094008850|0|statement|select * from "public"."type_party" where 1=0
+1734094008861|0|statement|select * from "public"."party" where 1=0
+1734094008863|0|statement|select * from "public"."type_provision" where 1=0
+1734094008864|0|statement|select * from "public"."users" where 1=0
+1734094008874|0|statement|select * from "public"."address" where 1=0
+1734094010341|2|statement|select count(*) from address a1_0
+1734094010344|0|commit|
+1734094010349|0|statement|select count(*) from users u1_0
+1734094010349|0|commit|
+1734094010436|4|statement|select * from information_schema.sequences
+1734094010486|0|statement|select * from "public"."users" where 1=0
+1734094010491|0|statement|select * from "public"."users" where 1=0
+1734094010501|0|statement|select * from "public"."type_party" where 1=0
+1734094010505|0|statement|select * from "public"."users" where 1=0
+1734094010515|0|statement|select * from "public"."party" where 1=0
+1734094010518|0|statement|select * from "public"."type_provision" where 1=0
+1734094010528|0|statement|select * from "public"."party" where 1=0
+1734094010529|0|statement|select * from "public"."users" where 1=0
+1734094010537|0|statement|select * from "public"."address" where 1=0
+1734094010541|0|statement|select * from "public"."type_party" where 1=0
+1734094010548|0|statement|select * from "public"."party" where 1=0
+1734094010551|0|statement|select * from "public"."type_provision" where 1=0
+1734094010552|0|statement|select * from "public"."users" where 1=0
+1734094010560|0|statement|select * from "public"."address" where 1=0
+1734094215082|23|statement|select * from information_schema.sequences
+1734094215216|4|statement|select * from "public"."users" where 1=0
+1734094215223|0|statement|select * from "public"."users" where 1=0
+1734094215235|1|statement|select * from "public"."type_party" where 1=0
+1734094215240|0|statement|select * from "public"."users" where 1=0
+1734094215256|3|statement|select * from "public"."party" where 1=0
+1734094215261|1|statement|select * from "public"."type_provision" where 1=0
+1734094215273|0|statement|select * from "public"."party" where 1=0
+1734094215275|0|statement|select * from "public"."users" where 1=0
+1734094215287|2|statement|select * from "public"."address" where 1=0
+1734094215291|0|statement|select * from "public"."type_party" where 1=0
+1734094215300|0|statement|select * from "public"."party" where 1=0
+1734094215302|0|statement|select * from "public"."type_provision" where 1=0
+1734094215304|0|statement|select * from "public"."users" where 1=0
+1734094215314|0|statement|select * from "public"."address" where 1=0
+1734094217072|2|statement|select count(*) from address a1_0
+1734094217075|0|commit|
+1734094217078|0|statement|select count(*) from users u1_0
+1734094217079|0|commit|
+1734097010926|5|statement|select * from information_schema.sequences
+1734097010982|0|statement|select * from "public"."users" where 1=0
+1734097010988|0|statement|select * from "public"."users" where 1=0
+1734097010999|0|statement|select * from "public"."type_party" where 1=0
+1734097011003|0|statement|select * from "public"."users" where 1=0
+1734097011017|1|statement|select * from "public"."party" where 1=0
+1734097011021|0|statement|select * from "public"."type_provision" where 1=0
+1734097011032|0|statement|select * from "public"."party" where 1=0
+1734097011034|0|statement|select * from "public"."users" where 1=0
+1734097011044|0|statement|select * from "public"."address" where 1=0
+1734097011048|0|statement|select * from "public"."type_party" where 1=0
+1734097011056|0|statement|select * from "public"."party" where 1=0
+1734097011059|0|statement|select * from "public"."type_provision" where 1=0
+1734097011060|0|statement|select * from "public"."users" where 1=0
+1734097011070|0|statement|select * from "public"."address" where 1=0
+1734097012526|0|statement|select count(*) from address a1_0
+1734097012529|0|commit|
+1734097012532|0|statement|select count(*) from users u1_0
+1734097012533|0|commit|
+1734097075440|12|statement|CREATE MATERIALIZED VIEW user_stats AS SELECT MAX(u.user_id) AS max_user_id, COUNT(u.user_id) AS current_user_count, u.name AS creator_name FROM "user" u WHERE u.created_at = (SELECT MIN(u2.created_at) FROM "user" u2) GROUP BY u.name
+1734097120602|11|statement|CREATE MATERIALIZED VIEW user_stats AS SELECT MAX(u.user_id) AS max_user_id, COUNT(u.user_id) AS current_user_count, u.name AS creator_name FROM "users" u WHERE u.created_at = (SELECT MIN(u2.created_at) FROM "users" u2) GROUP BY u.name
+1734101749605|15|statement|CREATE MATERIALIZED VIEW party_user_stats AS SELECT p.party_id, p.name AS party_name, COUNT(pa.user_id) AS current_user_count, p.numberMaxParticipate AS max_user_count, u.username AS organiser_name FROM party p LEFT JOIN participate pa ON p.party_id = pa.party_id LEFT JOIN users u ON pa.user_id = u.user_id AND pa.organiser = TRUE GROUP BY p.party_id, p.name, p.numberMaxParticipate, u.username
+1734101810593|30|statement|CREATE MATERIALIZED VIEW party_user_stats AS SELECT p.party_id, p.name AS party_name, COUNT(pa.user_id) AS current_user_count, p.number_max_participate AS _user_count, u.username AS organiser_name FROM party p LEFT JOIN participate pa ON p.party_id = pa.party_id LEFT JOIN users u ON pa.user_id = u.user_id AND pa.organiser = TRUE GROUP BY p.party_id, p.name, p.number_max_participate, u.username
+1734101812205|4|statement|select * from information_schema.sequences
+1734101812264|1|statement|select * from "public"."users" where 1=0
+1734101812270|0|statement|select * from "public"."users" where 1=0
+1734101812281|0|statement|select * from "public"."type_party" where 1=0
+1734101812285|0|statement|select * from "public"."users" where 1=0
+1734101812297|0|statement|select * from "public"."party" where 1=0
+1734101812303|2|statement|select * from "public"."type_provision" where 1=0
+1734101812314|0|statement|select * from "public"."party" where 1=0
+1734101812316|0|statement|select * from "public"."users" where 1=0
+1734101812326|1|statement|select * from "public"."address" where 1=0
+1734101812330|0|statement|select * from "public"."type_party" where 1=0
+1734101812339|0|statement|select * from "public"."party" where 1=0
+1734101812341|0|statement|select * from "public"."type_provision" where 1=0
+1734101812343|0|statement|select * from "public"."users" where 1=0
+1734101812353|0|statement|select * from "public"."address" where 1=0
+1734101813978|1|statement|select count(*) from address a1_0
+1734101813983|0|commit|
+1734101813987|0|statement|select count(*) from users u1_0
+1734101813988|0|commit|
+1734101876930|3|statement|select count(*) from address a1_0
+1734101876935|0|commit|
+1734101876939|0|statement|select count(*) from users u1_0
+1734101876939|0|commit|
+1734102476905|11|statement|CREATE MATERIALIZED VIEW party_user_stats AS SELECT p.party_id, p.name AS party_name, COUNT(pa.user_id) AS current_user_count, p.number_max_participate AS _user_count, u.username AS organiser_name FROM party p LEFT JOIN participate pa ON p.party_id = pa.party_id LEFT JOIN users u ON pa.user_id = u.user_id AND pa.organiser = TRUE GROUP BY p.party_id, p.name, p.number_max_participate, u.username
+1734102478361|7|statement|CREATE MATERIALIZED VIEW party_user_stats AS SELECT p.party_id, p.name AS party_name, COUNT(pa.user_id) AS current_user_count, p.number_max_participate AS _user_count, u.username AS organiser_name FROM party p LEFT JOIN participate pa ON p.party_id = pa.party_id LEFT JOIN users u ON pa.user_id = u.user_id AND pa.organiser = TRUE GROUP BY p.party_id, p.name, p.number_max_participate, u.username
+1734102510914|7|statement|CREATE MATERIALIZED VIEW party_user_stats AS SELECT p.party_id, p.name AS party_name, COUNT(pa.user_id) AS current_user_count, p.number_max_participate AS _user_count, u.username AS organiser_name FROM party p LEFT JOIN participate pa ON p.party_id = pa.party_id LEFT JOIN users u ON pa.user_id = u.user_id AND pa.organiser = TRUE GROUP BY p.party_id, p.name, p.number_max_participate, u.username
+1734102613662|11|statement|CREATE MATERIALIZED VIEW party_user_stats AS SELECT p.party_id, p.name AS party_name, COUNT(pa.user_id) AS current_user_count, p.number_max_participate AS _user_count, u.username AS organiser_name FROM party p LEFT JOIN participate pa ON p.party_id = pa.party_id LEFT JOIN users u ON pa.user_id = u.user_id AND pa.organiser = TRUE GROUP BY p.party_id, p.name, p.number_max_participate, u.username
+1734102654515|4|statement|select * from information_schema.sequences
+1734102654567|0|statement|select * from "public"."users" where 1=0
+1734102654574|0|statement|select * from "public"."users" where 1=0
+1734102654585|0|statement|select * from "public"."type_party" where 1=0
+1734102654589|0|statement|select * from "public"."users" where 1=0
+1734102654601|0|statement|select * from "public"."party" where 1=0
+1734102654605|0|statement|select * from "public"."type_provision" where 1=0
+1734102654616|0|statement|select * from "public"."party" where 1=0
+1734102654618|0|statement|select * from "public"."users" where 1=0
+1734102654627|0|statement|select * from "public"."address" where 1=0
+1734102654631|0|statement|select * from "public"."type_party" where 1=0
+1734102654640|0|statement|select * from "public"."party" where 1=0
+1734102654642|0|statement|select * from "public"."type_provision" where 1=0
+1734102654644|0|statement|select * from "public"."users" where 1=0
+1734102654653|0|statement|select * from "public"."address" where 1=0
+1734102656128|1|statement|select count(*) from address a1_0
+1734102656132|0|commit|
+1734102656135|0|statement|select count(*) from users u1_0
+1734102656135|0|commit|
+1734104006324|8|statement|select * from information_schema.sequences
+1734104006404|0|statement|select * from "public"."users" where 1=0
+1734104006411|0|statement|select * from "public"."users" where 1=0
+1734104006436|0|statement|select * from "public"."type_party" where 1=0
+1734104006441|0|statement|select * from "public"."users" where 1=0
+1734104006455|0|statement|select * from "public"."party" where 1=0
+1734104006459|0|statement|select * from "public"."type_provision" where 1=0
+1734104006473|0|statement|select * from "public"."party" where 1=0
+1734104006476|0|statement|select * from "public"."users" where 1=0
+1734104006485|0|statement|select * from "public"."address" where 1=0
+1734104006489|0|statement|select * from "public"."type_party" where 1=0
+1734104006500|0|statement|select * from "public"."party" where 1=0
+1734104006502|0|statement|select * from "public"."type_provision" where 1=0
+1734104006504|0|statement|select * from "public"."users" where 1=0
+1734104006517|0|statement|select * from "public"."address" where 1=0
+1734104008158|1|statement|select count(*) from address a1_0
+1734104008161|0|commit|
+1734104008165|0|statement|select count(*) from users u1_0
+1734104008165|0|commit|

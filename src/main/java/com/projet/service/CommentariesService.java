@@ -5,6 +5,8 @@ import com.projet.entity.Commentaries;
 import com.projet.repository.CommentariesRepository;
 import com.projet.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.format.DateTimeFormatter;
@@ -36,16 +38,15 @@ public class CommentariesService {
         );
     }
 
-    public CommentariesDto getCommentaryById(Long id) {
-        Optional<Commentaries> commentaries = commentariesRepository.findById(id);
-        return commentaries.map(this::convertToDTO).orElse(null);
+    public Page<CommentariesDto> getAllCommentaries(Pageable pageable) {
+        Page<Commentaries> commentariesPage = commentariesRepository.findAll(pageable);
+        return commentariesPage.map(this::convertToDTO);
     }
 
-    public List<CommentariesDto> getAllCommentaries() {
-        List<Commentaries> commentariesList = commentariesRepository.findAll();
-        return commentariesList.stream()
-                .map(this::convertToDTO)
-                .collect(Collectors.toList());
+    public CommentariesDto getCommentaryById(Long id) {
+        Optional<Commentaries> commentaries = commentariesRepository.findById(id);
+        return commentaries.map(this::convertToDTO)
+                .orElseThrow(() -> new RuntimeException("Commentaire non trouvé avec l'ID : " + id));
     }
 
     public CommentariesDto createCommentary(CommentariesDto commentariesDto) {

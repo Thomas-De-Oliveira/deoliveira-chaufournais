@@ -6,14 +6,15 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Set;
-
-@Entity
-@Table(name = "address")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Entity
+@Table(name = "address", indexes = {
+        @Index(name = "idx_address_city", columnList = "city"),
+        @Index(name = "idx_address_country", columnList = "country")
+})
 public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

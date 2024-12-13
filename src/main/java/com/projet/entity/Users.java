@@ -9,12 +9,15 @@ import lombok.Setter;
 import java.util.HashSet;
 import java.util.Set;
 
-@Entity
-@Table(name = "users")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Entity
+@Table(name = "users", indexes = {
+        @Index(name = "idx_users_username", columnList = "username"),
+        @Index(name = "idx_users_email", columnList = "email")
+})
 public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,12 +36,11 @@ public class Users {
     @OneToMany(mappedBy = "target", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Commentaries> commentairesRecus = new HashSet<>();
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "interests", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "type_party_id"))
     private Set<TypeParty> typeParties;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "address_id")
     private Address address;
-
 }

@@ -15,43 +15,49 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/users")
 public class UserController {
+
     @Autowired
     private UserService userService;
 
     @GetMapping
-    public ResponseEntity<List<UserDto>> findAll(@RequestParam(defaultValue = "0")int page, @RequestParam(defaultValue = "5")int size)
-    {
+    public ResponseEntity<List<UserDto>> findAll(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "5") int size) {
         Pageable pageable = PageRequest.of(page, size);
         return ResponseEntity.ok(userService.getAllUsers(pageable));
     }
 
     @PostMapping("/login")
-    public UserDto getUserByUsername(@RequestParam String username, @RequestParam String password) throws Exception {
+    public ResponseEntity<UserDto> getUserByUsername(@RequestParam String username, @RequestParam String password) throws Exception {
         Optional<UserDto> user = userService.getUserByUsername(username, password);
-        if (user.isPresent()) {
-            return user.get();
-        } else {
-            throw new RuntimeException("Invalid username or password");
-        }
+        return user.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.status(401).body(null));
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<UserDto> findById(@PathVariable Long id)
-    {
-        return ResponseEntity.ok(userService.getUserById(id));
+    public ResponseEntity<UserDto> findById(@PathVariable Long id) {
+        Optional<UserDto> user = Optional.ofNullable(userService.getUserById(id));
+        return user.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @PostMapping
-    public ResponseEntity<UserDto> save(@RequestBody UserCreationDto userDto) throws Exception {
-        return ResponseEntity.ok(userService.createUser(userDto));
+    public ResponseEntity<UserDto> save(@RequestBody UserCreationDto userDto) {
+        try {
+            UserDto savedUser = userService.createUser(userDto);
+            return ResponseEntity.ok(savedUser);
+        } catch (Exception e) {
+            return ResponseEntity.status(400).body(null); // Bad Request
+        }
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<UserDto> update(@PathVariable Long id, @RequestBody UserDto userDto) {
-        return ResponseEntity.ok(userService.updateUser(id, userDto));
+        try {
+            UserDto updatedUser = userService.updateUser(id, userDto);
+            return ResponseEntity.ok(updatedUser);
+        } catch (Exception e) {
+            return ResponseEntity.status(400).body(null); // Bad Request
+        }
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         userService.deleteUser(id);
         return ResponseEntity.noContent().build();

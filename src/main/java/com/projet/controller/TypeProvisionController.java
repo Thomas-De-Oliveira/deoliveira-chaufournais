@@ -3,6 +3,8 @@ package com.projet.controller;
 import com.projet.dto.TypeProvisionDto;
 import com.projet.service.TypeProvisionService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,9 +27,11 @@ public class TypeProvisionController {
     }
 
     @GetMapping
-    public ResponseEntity<List<TypeProvisionDto>> getAllTypeProvisions() {
-        List<TypeProvisionDto> typeProvisions = typeProvisionService.getAllTypeProvisions();
-        return ResponseEntity.ok(typeProvisions);
+    public ResponseEntity<List<TypeProvisionDto>> getAllTypeProvisions(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "5") int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        return ResponseEntity.ok(typeProvisionService.getAllTypeProvisions(pageable).getContent());
     }
 
     @PostMapping
@@ -42,7 +46,7 @@ public class TypeProvisionController {
         if (updatedTypeProvision != null) {
             return ResponseEntity.ok(updatedTypeProvision);
         }
-        return ResponseEntity.notFound().build(); // Si non trouvé
+        return ResponseEntity.notFound().build();
     }
 
     @DeleteMapping("/{id}")

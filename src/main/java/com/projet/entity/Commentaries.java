@@ -9,12 +9,17 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 
-@Entity
-@Table(name = "commentaries")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Entity
+@Table(name = "commentaries", indexes = {
+        @Index(name = "idx_commentary_note", columnList = "note"),
+        @Index(name = "idx_commentary_created_at", columnList = "created_at"),
+        @Index(name = "idx_commentary_author_id", columnList = "author_id"),
+        @Index(name = "idx_commentary_user_id", columnList = "user_id")
+})
 public class Commentaries {
 
     @Id
